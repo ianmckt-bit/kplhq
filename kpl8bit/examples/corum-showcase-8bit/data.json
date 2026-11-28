@@ -1,0 +1,141 @@
+{
+ "week": 12,
+ "asof": "2026-11-26T06:32:12.882Z",
+ "player": {
+  "name": "BLAKE CORUM",
+  "pos": "RB",
+  "team": "LAR",
+  "pts": 31.5,
+  "proj": 14.3,
+  "statline": "32 CAR, 184 YDS, 1 TD"
+ },
+ "game": {
+  "away": "GB",
+  "home": "LAR",
+  "lar": 26,
+  "gb": 13,
+  "venue": "SOFI STADIUM",
+  "status": "FINAL",
+  "larColor": "#003594",
+  "larAlt": "#ffd100",
+  "gbColor": "#204e32",
+  "gbAlt": "#ffb612",
+  "larRec": "7-4",
+  "gbRec": "6-5"
+ },
+ "plays": [
+  {
+   "q": 1,
+   "clock": "9:55",
+   "team": "LAR",
+   "text": "BRANDON MCMANUS 43 YD FIELD GOAL",
+   "kind": "field-goal",
+   "lar": 3,
+   "gb": 0,
+   "corum": false
+  },
+  {
+   "q": 1,
+   "clock": "3:12",
+   "team": "LAR",
+   "text": "BRANDON MCMANUS 41 YD FIELD GOAL",
+   "kind": "field-goal",
+   "lar": 6,
+   "gb": 0,
+   "corum": false
+  },
+  {
+   "q": 1,
+   "clock": "1:28",
+   "team": "GB",
+   "text": "TREY SMACK 54 YD FIELD GOAL",
+   "kind": "field-goal",
+   "lar": 6,
+   "gb": 3,
+   "corum": false
+  },
+  {
+   "q": 2,
+   "clock": "11:29",
+   "team": "LAR",
+   "text": "KYREN WILLIAMS 7 YD RUSH",
+   "kind": "touchdown",
+   "lar": 13,
+   "gb": 3,
+   "corum": false
+  },
+  {
+   "q": 2,
+   "clock": "8:06",
+   "team": "GB",
+   "text": "CHRISTIAN WATSON 6 YD PASS FROM JORDAN LOVE",
+   "kind": "touchdown",
+   "lar": 13,
+   "gb": 10,
+   "corum": false
+  },
+  {
+   "q": 2,
+   "clock": "1:50",
+   "team": "GB",
+   "text": "TREY SMACK 48 YD FIELD GOAL",
+   "kind": "field-goal",
+   "lar": 13,
+   "gb": 13,
+   "corum": false
+  },
+  {
+   "q": 3,
+   "clock": "6:58",
+   "team": "LAR",
+   "text": "BLAKE CORUM 1 YD RUSH",
+   "kind": "touchdown",
+   "lar": 20,
+   "gb": 13,
+   "corum": true
+  },
+  {
+   "q": 4,
+   "clock": "6:13",
+   "team": "LAR",
+   "text": "BRANDON MCMANUS 40 YD FIELD GOAL",
+   "kind": "field-goal",
+   "lar": 23,
+   "gb": 13,
+   "corum": false
+  },
+  {
+   "q": 4,
+   "clock": "0:27",
+   "team": "LAR",
+   "text": "BRANDON MCMANUS 30 YD FIELD GOAL",
+   "kind": "field-goal",
+   "lar": 26,
+   "gb": 13,
+   "corum": false
+  }
+ ],
+ "fantasy": {
+  "et": {
+   "name": "THE E-TEAM",
+   "logo": "e",
+   "score": 31.5,
+   "proj": 119.0
+  },
+  "opp": {
+   "name": "BAJA BOYZ",
+   "logo": "w",
+   "score": 16.5,
+   "proj": 144.7
+  },
+  "oppTop": {
+   "name": "CHRISTIAN WATSON",
+   "team": "GB",
+   "pts": 16.5
+  }
+ },
+ "sprite": {
+  "skin": "#de834e",
+  "jersey": "#0031ff"
+ }
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>KPL Player Card</title>
+<link rel="stylesheet" href="../../lib/kpl8.css">
+<style>
+/* layout for this template only; colours come from the theme tokens in kpl8.css */
+#A1{top:740px;font-size:30px}#A2{top:800px;font-size:48px}#A3{top:880px;font-size:48px}
+.card-art{background-color:var(--shade)}
+#tot{font-size:112px;color:var(--accent)}
+</style></head>
+<body class="v">
+<canvas id="bg" width="1080" height="1920"></canvas>
+<div id="stage">
+  <div class="scene" id="open">
+    <span class="logo abs" id="Alogo" style="left:330px;top:300px;width:420px"></span>
+    <div class="abs c sh t-accent2" id="A1"></div><div class="abs c big" id="A2"></div><div class="abs c big" id="A3"></div>
+    <canvas id="feastA" width="1080" height="440" style="top:1010px"></canvas>
+  </div>
+  <div class="scene" id="outro">
+    <div class="abs c big t-accent" id="F1" style="top:1000px;font-size:68px"></div>
+    <div class="abs c sh" id="F2" style="top:1100px;font-size:22px;line-height:1.8"></div>
+    <canvas id="feastF" width="1080" height="440" style="top:1200px"></canvas>
+  </div>
+  <div class="card-wrap" id="cardWrap"><div class="card" id="card">
+    <div class="face pf-accent" id="front">
+      <div class="card-hd"><span class="t-muted" id="cHd"></span><span class="chip" id="cPos"></span></div>
+      <div class="card-art stripes"><canvas id="artfx" width="820" height="560"></canvas><div class="card-ghost" id="ghost"></div><canvas id="spr" width="820" height="540" style="left:0;top:auto;bottom:0"></canvas></div>
+      <div class="abs c big" id="cName" style="top:676px;font-size:52px"></div>
+      <div class="abs c t-muted" id="cSub" style="top:752px;font-size:17px"></div>
+      <div class="abs c" style="top:800px"><span id="tot">0.0</span><div class="t-muted" id="cTotLab" style="font-size:16px;margin-top:14px"></div></div>
+      <div class="abs" id="cChips" style="left:30px;right:30px;top:1000px;display:flex;justify-content:space-between"></div>
+      <div class="card-foot"><span class="logo" id="cFootLogo" style="width:66px"></span><span id="cFoot"></span></div>
+      <div class="holo" id="holo"></div><canvas id="spark" width="860" height="1250"></canvas>
+    </div>
+    <div class="face back pf stripes"><span class="logo" id="backLogo" style="width:420px"></span></div>
+  </div></div>
+  <div class="scene" id="box">
+    <div class="abs kicker" id="Ck" style="left:70px;top:300px"></div><div class="abs title" id="Ct" style="left:70px;top:345px"></div>
+    <div id="Cgrid"></div><div class="abs sh" id="Ch2" style="left:70px;top:1050px;font-size:22px"></div>
+    <canvas id="stack" width="1080" height="1920"></canvas><div id="Clegend"></div>
+  </div>
+  <div class="scene" id="season">
+    <div class="abs kicker" id="Dk" style="left:70px;top:300px"></div><div class="abs title" id="Dt" style="left:70px;top:345px"></div>
+    <canvas id="chart" width="1080" height="1920"></canvas><div id="Dlabs"></div>
+    <div class="abs c sh" id="Dnote" style="top:1510px;font-size:18px;line-height:1.9"></div>
+  </div>
+  <div class="scene" id="matchup">
+    <div class="abs kicker" id="Mk" style="left:70px;top:300px"></div><div class="abs title" id="Mt" style="left:70px;top:345px"></div>
+    <div class="abs pf-accent panel" id="m1" style="left:70px;top:470px;width:420px;height:470px;padding:30px 20px;display:flex;flex-direction:column;align-items:center"><span class="logo" id="m1l" style="width:220px"></span><div class="sh" id="m1n" style="font-size:28px;margin-top:24px"></div><div id="m1s" style="font-size:72px;color:var(--accent);margin-top:26px;text-shadow:5px 5px 0 var(--shade),8px 8px 0 #000">0.0</div></div>
+    <div class="abs big t-accent" id="mvs" style="left:490px;top:660px;width:100px;text-align:center;font-size:44px">VS</div>
+    <div class="abs pf panel" id="m2" style="left:590px;top:470px;width:420px;height:470px;padding:30px 20px;display:flex;flex-direction:column;align-items:center"><span class="logo" id="m2l" style="width:220px"></span><div class="sh" id="m2n" style="font-size:28px;margin-top:24px"></div><div id="m2s" style="font-size:72px;margin-top:26px;text-shadow:5px 5px 0 #000">0.0</div></div>
+    <div class="abs pf panel" id="duel" style="left:70px;top:1010px;width:940px;padding:30px"><div class="sh t-accent2" id="duelK" style="font-size:18px"></div><div id="duelRows" style="margin-top:24px"></div><div class="t-muted" id="Masof" style="font-size:14px;margin-top:22px;line-height:1.7"></div></div>
+  </div>
+</div>
+<div class="bug" id="bug"><span class="logo" id="bugLogo"></span><div><b id="bugT"></b><i id="bugS"></i></div></div>
+<canvas id="fx" width="1080" height="1920" style="z-index:45"></canvas>
+<div class="flash" id="flash"></div><div class="vign"></div><div class="scan"></div>
+<script src="../../lib/kpl8.js"></script>
+<script>
+/* Player card template. Scenes: open -> card -> box -> season -> matchup -> outro.
+   Everything on screen comes from data.json (see data.example.json and README.md). */
+const {$, P, oq, sine, spr, set, fin, slam, io} = K8;
+let D, SPR;
+const TL = K8.timeline([['open',0,3.6],['card',3.6,9.6],['box',9.6,15.6],['season',15.6,21.6],['matchup',21.6,27.0],['outro',27.0,31.5]]);
+const T = id => TL.scenes.find(s => s[0] === id)[1];
+const BG = t => { const big = t < T('card') || t >= T('outro'); const c = $('bg').getContext('2d');
+  if (D.background === 'kpl') K8.bgKPL(c, t, {leaves: true}); else K8.bgHaunted(c, t, {leaves: true, moon: big ? {x:840,y:300,r:110} : {x:960,y:180,r:60}}) };
+function build(){ document.body.classList.add('theme-' + D.theme);
+  const p = D.player, k = D.card;
+  $('Alogo').dataset.logo = D.open.logo; $('A1').textContent = D.open.lines[0]; $('A2').textContent = D.open.lines[1]; $('A3').textContent = D.open.lines[2] || '';
+  ['bugLogo','backLogo','cFootLogo'].forEach(id => $(id).dataset.logo = p.kplLogo); $('bugT').textContent = 'KPL HQ'; $('bugS').textContent = D.bug;
+  $('cHd').textContent = k.header; $('cPos').textContent = p.pos; $('ghost').textContent = k.ghost; $('cName').textContent = p.name; $('cSub').textContent = k.sub; $('cTotLab').textContent = k.totalLabel; $('cFoot').textContent = k.foot;
+  $('cChips').innerHTML = k.chips.map((x,i) => `<div class="c3" id="cc${i}"><b>${x[0]}</b><i>${x[1]}</i></div>`).join('');
+  K8.sprite($('spr'), SPR, k.spriteScale || 9);
+  const b = D.box; $('Ck').textContent = b.kicker; $('Ct').textContent = b.title; $('Ch2').textContent = b.partsTitle;
+  $('Cgrid').innerHTML = b.stats.map((x,i) => `<div class="stat pf panel" id="sg${i}" style="left:${70+(i%3)*320}px;top:${470+Math.floor(i/3)*250}px"><b data-v="${x[0]}" data-d="${x[2]||0}">0</b><i>${x[1]}</i></div>`).join('');
+  $('Clegend').innerHTML = b.parts.map((q,i) => `<div class="abs sh" id="lg${i}" style="left:70px;top:${1250+i*64}px;width:940px;display:flex;align-items:center;gap:18px;font-size:20px"><span style="width:34px;height:34px;background:${D.partCols[i]};box-shadow:0 0 0 3px #000"></span><span style="flex:1">${q[0]}</span><span class="t-accent">+${q[1].toFixed(1)}</span></div>`).join('');
+  const s = D.season, n = s.weeks.length, bw = (1000-110)/n; $('Dk').textContent = s.kicker; $('Dt').textContent = s.title; $('Dnote').innerHTML = s.note;
+  $('Dlabs').innerHTML = s.weeks.map((w,i) => `<div class="abs sh" id="dl${i}" style="left:${110+i*bw}px;width:${bw}px;text-align:center;top:1418px;font-size:16px;color:var(--muted)">W${w.wk}</div><div class="abs sh" id="dv${i}" style="left:${110+i*bw-10}px;width:${bw+20}px;text-align:center;font-size:${w.played?17:14}px;color:${w.pts>=40?'var(--accent)':'var(--text)'}">${w.played?w.pts.toFixed(1):'BYE'}</div>`).join('');
+  const m = D.matchup; $('Mk').textContent = m.kicker; $('Mt').textContent = m.title; $('m1l').dataset.logo = m.a.logo; $('m2l').dataset.logo = m.b.logo; $('m1n').textContent = m.a.name; $('m2n').textContent = m.b.name; $('duelK').textContent = m.rowsTitle; $('Masof').innerHTML = m.foot;
+  const mx = Math.max(...m.rows.map(r => r[2]));
+  $('duelRows').innerHTML = m.rows.map((r,i) => `<div style="display:grid;grid-template-columns:330px 1fr 120px;gap:16px;align-items:center;margin-top:${i?20:0}px;font-size:16px"><span>${r[0]}<br><span class="t-muted" style="font-size:13px">${r[1]}</span></span><div style="height:34px;background:#000;padding:4px"><div id="db${i}" style="height:100%;width:0;background:${r[3]};box-shadow:0 0 14px ${r[3]}"></div></div><span id="dv2${i}" style="text-align:right;font-size:26px;color:${r[3]};text-shadow:3px 3px 0 #000">0.0</span></div>`).join('');
+  m._mx = mx; $('F1').textContent = D.outro.title; $('F2').innerHTML = D.outro.line }
+function render(t){ BG(t); K8.slashWipe($('fx').getContext('2d'), t, TL.starts.slice(1)); $('flash').style.opacity = Math.max(0, 1 - Math.abs(t - .55) / .15) * .7;
+  const [id, u] = TL.show(t); $('bug').style.display = t > 3.2 ? 'flex' : 'none';
+  K8.cardPose('cardWrap', 'card', t, {flipIn:[2.7,3.3], show:T('card'), exit:[T('box')-.4, T('box')+.1], outro:T('outro'), outroPose:{s:.5, y:-380}});
+  const cu = Math.max(0, t - T('card')), k = D.card;   // card face is live whenever visible
+  { const c = $('artfx').getContext('2d'); c.clearRect(0,0,820,560); K8.moon(c, 410, 250, 190, cu); for (let i=0;i<12;i++){ const y=((i*83+cu*60)%640)-40, x=(i*137)%800+Math.sin(cu+i)*20; K8.leaf(c, K8.snap(x,4), K8.snap(y,4), 4, ['#b8481a','#ff8a1f','#f2a52b'][i%3], i%2) } }
+  K8.count('tot', cu, .6, 2.3, k.total); $('tot').style.textShadow = `7px 7px 0 var(--shade),11px 11px 0 #000,0 0 ${cu>2.3?18+10*Math.sin(cu*4):0}px var(--accent)`;
+  k.chips.forEach((_,i) => { const el = $('cc'+i), p = spr(P(cu, 1.5+i*.15, 2.3+i*.15)); el.style.transform = `scale(${p})`; el.style.opacity = P(cu, 1.5+i*.15, 1.65+i*.15) });
+  K8.holo('holo', cu); K8.sparkles($('spark').getContext('2d'), cu); set('ghost', {transform: `translateX(${(1-spr(P(cu,.3,1.1)))*300}px)`});
+  if (id === 'open') { const p = P(u,.15,.55); set('Alogo', {transform:`scale(${p<1?2.6-1.6*oq(p):1+.02*Math.sin(u*3)})`, opacity:P(u,.15,.3), filter:`drop-shadow(0 0 ${30+15*Math.sin(u*4)}px rgba(224,32,42,.8))`});
+    fin('A1',u,.7,.6,-30); slam('A2',u,1.0); slam('A3',u,1.25); K8.feast($('feastA'), u, (1-oq(P(u,1.3,2.0)))*440);
+    const out = P(u,2.5,2.9); ['Alogo','A1','A2','A3','feastA'].forEach(i => $(i).style.opacity = Math.min(+$(i).style.opacity||1, 1-out)) }
+  if (id === 'box') { document.querySelectorAll('#Cgrid .stat').forEach((el,i) => { const a=.3+i*.14; fin(el,u,a,.8,0,i%3===0?-300:i%3===2?300:0); const b=el.querySelector('b'), v=+b.dataset.v, e=sine(P(u,a+.1,a+1)); b.textContent = +b.dataset.d ? (v*e).toFixed(1) : Math.round(v*e) });
+    fin('Ch2',u,1.6,.6,30); const c=$('stack').getContext('2d'); c.clearRect(0,0,1080,1920); K8.stackBar(c,{u,x:70,y:1130,w:940,h:80,parts:D.box.parts,cols:D.partCols,start:2.0,step:.35}); D.box.parts.forEach((_,i)=>fin('lg'+i,u,2.0+i*.35,.6,0,-120)) }
+  if (id === 'season') { const c=$('chart').getContext('2d'); c.clearRect(0,0,1080,1920); const s=D.season;
+    K8.weekBars(c,{u,x0:110,x1:1000,y:1400,h:740,max:60,weeks:s.weeks,best:s.best,avg:s.avg,hot:40,start:.6,step:.17,crownLabel:s.crownLabel,labels:{week:'dl',value:'dv'},
+      cols:{bar:'#bf362b',hot:getComputedStyle(document.body).getPropertyValue('--accent').trim(),best:'#ffd27a',grid:'rgba(198,176,163,.12)',text:'#c6b0a3',bye:'#6b161b'}}); fin('Dnote',u,4.4,.8,40) }
+  if (id === 'matchup') { const m=D.matchup, a=K8.oc(P(u,.1,.6)), b=K8.oc(P(u,.25,.75)); set('m1',{transform:`translateX(${-600*(1-a)}px)`}); set('m2',{transform:`translateX(${600*(1-b)}px)`}); set('mvs',{transform:`scale(${spr(P(u,.6,1.1))})`});
+    K8.count('m1s',u,.7,1.8,m.a.score); K8.count('m2s',u,.8,1.8,m.b.score); fin('duel',u,1.4,.7,60);
+    m.rows.forEach((r,i) => { const f=sine(P(u,1.8+i*.25,2.7+i*.25)); $('db'+i).style.width=(100*r[2]/m._mx*f)+'%'; $('dv2'+i).textContent=(r[2]*f).toFixed(1) }) }
+  if (id === 'outro') { fin('F1',u,.5,.7,40); fin('F2',u,.8,.7,30); K8.feast($('feastF'), u, (1-oq(P(u,.9,1.6)))*440) }
+  K8.fadeOut(t, TL.end) }
+window.END = TL.end;
+window.setData = async d => { D = d; SPR = d.player.sprite ? await K8.loadImg('../../' + d.player.sprite) : null; build() };
+window.render = render;
+</script></body></html>

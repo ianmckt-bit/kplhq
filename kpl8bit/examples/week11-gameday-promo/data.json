@@ -1,0 +1,115 @@
+{
+ "week": 11,
+ "league": "KEANSBURG PREMIER LEAGUE",
+ "fetched": "2026-11-22T14:26:16.325Z",
+ "matchups": [
+  [
+   {
+    "name": "RONNIES REGIME",
+    "logo": "r",
+    "rec": "4-6",
+    "seed": 8,
+    "proj": 129.5,
+    "win": 45
+   },
+   {
+    "name": "BIG BALLS BLUM",
+    "logo": "b",
+    "rec": "7-3",
+    "seed": 2,
+    "proj": 139.5,
+    "win": 55
+   }
+  ],
+  [
+   {
+    "name": "BAYSHORE BARSLUGS",
+    "logo": "v",
+    "rec": "4-6",
+    "seed": 10,
+    "proj": 135.5,
+    "win": 70
+   },
+   {
+    "name": "TEAM BLISS",
+    "logo": "t",
+    "rec": "3-7",
+    "seed": 11,
+    "proj": 99.2,
+    "win": 30
+   }
+  ],
+  [
+   {
+    "name": "MANGES MILITIA",
+    "logo": "m",
+    "rec": "6-4",
+    "seed": 5,
+    "proj": 121.2,
+    "win": 53
+   },
+   {
+    "name": "HOUSE OF HECK",
+    "logo": "h",
+    "rec": "8-2",
+    "seed": 1,
+    "proj": 116.9,
+    "win": 47
+   }
+  ],
+  [
+   {
+    "name": "KEELDAWGS",
+    "logo": "k",
+    "rec": "6-4",
+    "seed": 4,
+    "proj": 116.4,
+    "win": 44
+   },
+   {
+    "name": "BAJA BOYZ",
+    "logo": "w",
+    "rec": "6-4",
+    "seed": 3,
+    "proj": 127.8,
+    "win": 56
+   }
+  ],
+  [
+   {
+    "name": "THE T SERIES",
+    "logo": "s",
+    "rec": "4-6",
+    "seed": 9,
+    "proj": 121.0,
+    "win": 56
+   },
+   {
+    "name": "CORGI'S UNDERDOG KENNEL",
+    "logo": "u",
+    "rec": "2-8",
+    "seed": 12,
+    "proj": 109.3,
+    "win": 44
+   }
+  ],
+  [
+   {
+    "name": "THE E-TEAM",
+    "logo": "e",
+    "rec": "5-5",
+    "seed": 7,
+    "proj": 90.8,
+    "win": 25
+   },
+   {
+    "name": "CK COALITION",
+    "logo": "c",
+    "rec": "5-5",
+    "seed": 6,
+    "proj": 136.7,
+    "win": 75
+   }
+  ]
+ ]
+}

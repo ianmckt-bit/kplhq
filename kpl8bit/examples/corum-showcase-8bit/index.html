@@ -1,0 +1,285 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Corum 8-Bit Showcase</title>
+<style>
+@font-face{font-family:PS2P;src:url(../../assets/fonts/ps2p.woff2)}
+@font-face{font-family:VT;src:url(../../assets/fonts/vt323.woff2)}
+:root{--navy:#020f3d;--deep:#031c69;--blue:#062991;--mid:#1043b4;--bright:#1d63e0;--line:#5b91ff;--ice:#cfe0ff;--white:#f8fbff;--yellow:#ffe32b;--red:#ff1644;--red-ink:#c4002b;--green:#35f377;--turf:#0b3e28;--lar:#003594;--gold:#ffd100;--gb:#204e32;--gbgold:#ffb612}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--navy)}
+body{font-family:PS2P,monospace;color:var(--white);position:relative;-webkit-font-smoothing:none;line-height:1.2}
+canvas{image-rendering:pixelated}
+#bg{position:absolute;inset:0}
+.scan{position:absolute;inset:0;z-index:60;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 2px,transparent 2px 6px)}
+.vign{position:absolute;inset:0;z-index:59;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+.layer{position:absolute;inset:0}
+.abs{position:absolute}
+.frame{background:linear-gradient(180deg,#0b37ad 0,#062b96 38%,#04217a 100%);box-shadow:0 0 0 6px #000,0 0 0 12px var(--white),0 0 0 18px #000,0 24px 0 0 var(--deep),0 24px 0 6px #000}
+.frame.gold{box-shadow:0 0 0 6px #000,0 0 0 12px var(--gold),0 0 0 18px #000,0 24px 0 0 #7a5d00,0 24px 0 6px #000}
+.sh{text-shadow:4px 4px 0 #000}
+.big{text-shadow:8px 8px 0 var(--red-ink),12px 12px 0 #000}
+.y{color:var(--yellow)}.ice{color:var(--ice)}.g{color:var(--green)}
+.mask{overflow:hidden;display:block}.mask>span{display:block}
+.logo{display:block;background-repeat:no-repeat;filter:drop-shadow(6px 6px 0 #000)}
+[data-logo=e]{background-image:url(../../assets/logos/spriteA.png);background-size:1431.25% 1192.7083%;aspect-ratio:1;background-position:6.025% 34.795%}
+[data-logo=w]{background-image:url(../../assets/logos/spriteA.png);background-size:1374% 1192.7083%;aspect-ratio:100/96;background-position:98.1947% 71.9733%}
+[data-logo=league]{background-image:url(../../assets/logos/spriteB.png);background-size:781.6794% 1129.4118%;background-position:50.056% 1.2857%;aspect-ratio:131/136;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);filter:none}
+.hdr{left:70px;top:250px;display:flex;align-items:center;gap:20px}
+.hdr b{font-weight:400;font-size:26px;color:var(--yellow);text-shadow:4px 4px 0 #000}
+.hdr i{display:block;height:8px;width:0;background:repeating-linear-gradient(90deg,var(--yellow) 0 16px,transparent 16px 24px)}
+.chip{display:inline-block;padding:12px 16px;font-size:18px;background:#000;box-shadow:0 0 0 4px var(--white)}
+.seg{display:flex;gap:6px;height:40px;background:#000;padding:6px;box-shadow:0 0 0 4px var(--white)}
+.seg span{flex:1;background:#0a1f5c}
+.seg span.on{background:var(--yellow)}.seg span.lar{background:var(--gold)}.seg span.gbc{background:var(--gbgold)}
+.tile{width:290px;height:250px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.tile b{font-weight:400;font-size:84px;text-shadow:6px 6px 0 #000}
+.tile i{font-style:normal;font-size:16px;color:var(--ice)}
+.row{left:70px;width:940px;height:84px;display:flex;align-items:center;gap:14px;padding:0 20px}
+.row .q{width:112px;font-size:14px;color:var(--ice);line-height:1.5}
+.row .tm{width:76px;text-align:center;padding:8px 0;font-size:15px;box-shadow:0 0 0 3px #000}
+.row .tx{flex:1;font-size:14px;line-height:1.45}
+.row .sc{width:140px;text-align:right;font-size:22px;white-space:nowrap;text-shadow:3px 3px 0 #000}
+.row.hl{background:var(--yellow);color:var(--deep);box-shadow:0 0 0 6px #000,0 0 0 12px var(--white),0 0 0 18px #000,0 24px 0 0 #7a5d00,0 24px 0 6px #000}
+.row.hl .q{color:var(--deep)}.row.hl .sc{text-shadow:none}
+</style></head>
+<body>
+<canvas id="bg" width="1080" height="1920"></canvas>
+
+<!-- 1 intro -->
+<div class="layer" id="s1">
+  <div class="abs" id="stripe" style="left:-300px;top:520px;width:1700px;height:380px;background:var(--mid);box-shadow:0 -16px 0 var(--gold),0 16px 0 var(--gold),0 22px 0 #000,0 -22px 0 #000"></div>
+  <span class="logo abs" data-logo="e" id="s1logo" style="left:465px;top:230px;width:150px"></span>
+  <div class="abs sh" id="s1k" style="top:410px;width:100%;text-align:center;font-size:22px;color:var(--ice)">THE E-TEAM SHOWCASE</div>
+  <div class="abs mask" style="left:150px;top:470px;width:780px;height:470px"><canvas id="bust1" width="660" height="520" style="position:absolute;left:66px;width:660px;height:520px"></canvas></div>
+  <div class="abs mask big" style="left:0;width:1080px;text-align:center;top:990px;font-size:150px;height:180px"><span id="s1a">BLAKE</span></div>
+  <div class="abs mask big" style="left:0;width:1080px;text-align:center;top:1160px;font-size:150px;color:var(--gold);height:180px"><span id="s1b">CORUM</span></div>
+  <div class="abs" id="s1c" style="top:1370px;width:100%;display:flex;justify-content:center;gap:26px">
+    <span class="chip" style="background:var(--gold);color:var(--lar)">RB</span><span class="chip" style="background:var(--lar)">LA RAMS</span><span class="chip y">WEEK 12</span>
+  </div>
+  <div class="abs sh ice" id="s1d" style="top:1460px;width:100%;text-align:center;font-size:18px"></div>
+</div>
+
+<!-- 2 game stats -->
+<div class="layer" id="s2">
+  <div class="abs hdr"><b>GAME STATS</b><i id="s2rule"></i></div>
+  <div class="abs sh ice" id="s2k" style="left:70px;top:330px;font-size:18px">GB @ LAR · RUSHING</div>
+  <div class="abs big" id="s2big" style="left:70px;top:400px;font-size:290px;color:var(--gold)">0</div>
+  <div class="abs sh" id="s2lbl" style="left:70px;top:740px;font-size:58px">RUSHING YARDS</div>
+  <div class="abs" id="s2bar" style="left:76px;top:860px;width:928px"><div class="seg" id="s2seg"></div>
+    <div class="ice" style="display:flex;justify-content:space-between;font-size:14px;margin-top:16px"><span>0</span><span>50</span><span>100</span><span>150</span><span>200 YDS</span></div></div>
+  <div class="abs frame tile" id="t1" style="left:70px;top:1010px"><b id="t1v">0</b><i>CARRIES</i></div>
+  <div class="abs frame tile" id="t2" style="left:395px;top:1010px"><b id="t2v">0.0</b><i>YDS/CARRY</i></div>
+  <div class="abs frame tile" id="t3" style="left:720px;top:1010px"><b id="t3v" class="y">0</b><i>RUSH TD</i></div>
+  <div class="abs" id="s2badge" style="left:76px;top:1340px"><span class="chip g" style="font-size:24px;padding:18px 24px;box-shadow:0 0 0 4px var(--green)">&gt;&gt; GAME-HIGH RUSHER</span></div>
+</div>
+
+<!-- 3 fantasy -->
+<div class="layer" id="s3">
+  <div class="abs hdr"><b>FANTASY SCORING</b><i id="s3rule"></i></div>
+  <div class="abs" id="ring" style="left:0;top:0;width:1080px;height:1100px"></div>
+  <div class="abs" style="left:240px;top:420px;width:600px;height:540px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div class="big" id="s3pts" style="font-size:112px">0.0</div>
+    <div class="sh ice" style="font-size:18px;margin-top:30px">FANTASY PTS</div>
+  </div>
+  <div class="abs sh ice" id="s3pl" style="top:1025px;width:100%;text-align:center;font-size:16px"></div>
+  <div class="abs" id="s3a" style="left:70px;top:1100px;display:flex;gap:24px">
+    <div class="frame" style="width:458px;padding:30px"><div id="s3o" class="g" style="font-size:66px;text-shadow:6px 6px 0 #000">+0.0</div><div class="ice" style="font-size:15px;margin-top:20px">OVER PROJECTION</div></div>
+    <div class="frame" style="width:458px;padding:30px"><div id="s3x" class="y" style="font-size:66px;text-shadow:6px 6px 0 #000">0.0X</div><div class="ice" style="font-size:15px;margin-top:20px">HIS PROJECTED TOTAL</div></div>
+  </div>
+  <div class="abs frame" id="s3b" style="left:70px;top:1350px;width:940px;padding:26px 28px">
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:16px"><span style="display:flex;align-items:center;gap:16px"><span class="logo" data-logo="e" style="width:56px"></span>SHARE OF E-TEAM PTS</span><span id="s3pct" class="y" style="font-size:40px;text-shadow:4px 4px 0 #000">0%</span></div>
+    <div class="seg" id="s3seg" style="margin-top:18px;height:34px"></div>
+    <div class="ice" style="font-size:12px;margin-top:16px;line-height:1.6" id="s3asof"></div>
+  </div>
+</div>
+
+<!-- 4 highlights -->
+<div class="layer" id="s4">
+  <div class="abs hdr"><b>GAME HIGHLIGHTS</b><i id="s4rule"></i></div>
+  <div class="abs" style="left:70px;top:320px;width:940px;display:flex;justify-content:space-between;align-items:center">
+    <div class="sh ice" style="font-size:15px">SCORING PLAYS</div>
+    <div class="sh" style="font-size:34px"><span style="color:var(--gbgold)">GB <span id="sgb">0</span></span><span class="ice"> - </span><span style="color:var(--gold)">LAR <span id="slar">0</span></span></div>
+  </div>
+  <div id="rows"></div>
+  <div class="abs frame gold" id="tdcard" style="left:70px;top:560px;width:940px;height:800px;overflow:hidden;background:var(--lar)">
+    <canvas id="burst" class="abs" width="940" height="800" style="left:0;top:0"></canvas>
+    <div class="abs y sh" style="top:44px;width:100%;text-align:center;font-size:18px">Q3 6:58 · GO-AHEAD SCORE</div>
+    <div class="abs mask big" style="top:100px;width:100%;text-align:center;font-size:90px;height:110px"><span id="tdword">TOUCHDOWN</span></div>
+    <canvas id="bust2" class="abs" width="264" height="208" style="left:338px;top:228px;width:264px;height:208px"></canvas>
+    <div class="abs sh y" id="tdname" style="top:464px;width:100%;text-align:center;font-size:52px">BLAKE CORUM</div>
+    <div class="abs sh" id="tdplay" style="top:548px;width:100%;text-align:center;font-size:28px">1 YD RUSH</div>
+    <div class="abs sh" id="tdtie" style="top:618px;width:100%;text-align:center;font-size:36px"><span style="opacity:.5;text-decoration:line-through">13-13</span> <span class="y">&gt;</span> LAR 20-13</div>
+    <div class="abs ice" style="top:718px;width:100%;text-align:center;font-size:13px">BROKE THE TIE · RAMS NEVER TRAILED AGAIN</div>
+  </div>
+</div>
+
+<!-- 5 matchup -->
+<div class="layer" id="s5">
+  <div class="abs hdr"><b>KPL WEEK 12</b><i id="s5rule"></i></div>
+  <div class="abs frame" id="m1" style="left:70px;top:350px;width:420px;height:540px;padding:34px 20px;display:flex;flex-direction:column;align-items:center">
+    <span class="logo" data-logo="e" style="width:220px"></span>
+    <div class="sh" style="font-size:32px;margin-top:30px">THE E-TEAM</div>
+    <div class="big" id="m1s" style="font-size:80px;color:var(--gold);margin-top:34px">0.0</div>
+  </div>
+  <div class="abs big y" id="mvs" style="left:490px;top:580px;width:100px;text-align:center;font-size:48px">VS</div>
+  <div class="abs frame" id="m2" style="left:590px;top:350px;width:420px;height:540px;padding:34px 20px;display:flex;flex-direction:column;align-items:center">
+    <span class="logo" data-logo="w" style="width:228px"></span>
+    <div class="sh" style="font-size:32px;margin-top:22px">BAJA BOYZ</div>
+    <div class="sh" id="m2s" style="font-size:80px;margin-top:34px">0.0</div>
+  </div>
+  <div class="abs frame" id="duel" style="left:70px;top:960px;width:940px;padding:32px 30px">
+    <div class="y sh" style="font-size:18px">SAME GAME. DIFFERENT RESULT.</div>
+    <div style="margin-top:30px;display:grid;grid-template-columns:250px 1fr 120px;gap:28px 18px;align-items:center;font-size:16px">
+      <span>B. CORUM <span class="ice">LAR</span></span><div class="seg" id="d1" style="height:34px"></div><span id="d1v" class="y" style="font-size:28px;text-align:right;text-shadow:3px 3px 0 #000">0.0</span>
+      <span id="d2n"></span><div class="seg" id="d2" style="height:34px"></div><span id="d2v" style="font-size:28px;text-align:right;text-shadow:3px 3px 0 #000">0.0</span>
+    </div>
+    <div class="ice" style="margin-top:28px;font-size:12px;line-height:1.6" id="m_asof"></div>
+  </div>
+</div>
+
+<!-- 6 postgame sip -->
+<div class="layer" id="s6">
+  <div class="abs hdr"><b>POSTGAME</b><i id="s6rule"></i></div>
+  <div class="abs frame" id="sipframe" style="left:70px;top:360px;width:940px;height:780px;overflow:hidden">
+    <canvas id="sip" width="760" height="640" class="abs" style="left:90px;top:140px;width:760px;height:640px"></canvas>
+    <div class="abs big y" id="slurp" style="left:0;top:50px;width:100%;text-align:center;font-size:60px;white-space:nowrap"></div>
+  </div>
+  <div class="abs sh" id="s6a" style="top:1210px;width:100%;text-align:center;font-size:40px;line-height:1.6">BAJA BLAST <span class="ice">AFTER</span><br>PUTTING <span class="y">31.5</span> ON<br>THE BAJA BOYZ</div>
+</div>
+
+<!-- 7 outro -->
+<div class="layer" id="s7">
+  <span class="logo abs" data-logo="league" id="s7logo" style="left:440px;top:330px;width:200px"></span>
+  <div class="abs big y" id="s7a" style="top:620px;width:100%;text-align:center;font-size:80px">BLAKE CORUM</div>
+  <div class="abs" id="s7b" style="top:800px;width:100%;display:flex;justify-content:center;gap:30px">
+    <div class="frame" style="width:280px;padding:28px 10px;text-align:center"><div style="font-size:64px;text-shadow:5px 5px 0 #000">184</div><div class="ice" style="font-size:14px;margin-top:20px">RUSH YDS</div></div>
+    <div class="frame" style="width:280px;padding:28px 10px;text-align:center"><div style="font-size:64px;text-shadow:5px 5px 0 #000">1</div><div class="ice" style="font-size:14px;margin-top:20px">RUSH TD</div></div>
+    <div class="frame" style="width:280px;padding:28px 10px;text-align:center"><div class="y" style="font-size:64px;text-shadow:5px 5px 0 #000">31.5</div><div class="ice" style="font-size:14px;margin-top:20px">FPTS</div></div>
+  </div>
+  <div class="abs sh" id="s7c" style="top:1110px;width:100%;text-align:center;font-size:28px">FINAL <span style="color:var(--gold)">LAR 26</span> - <span style="color:var(--gbgold)">GB 13</span></div>
+  <div class="abs" id="s7d" style="top:1240px;width:100%;text-align:center"><div class="y sh" style="font-size:30px">KPL HQ</div><div class="ice" style="font-size:16px;margin-top:22px">KPLHQ.KPLREDZONE.WORKERS.DEV</div></div>
+  <div class="abs sh" id="s7e" style="top:1420px;width:100%;text-align:center;font-size:26px">GAME OVER</div>
+</div>
+<div class="layer" id="fade" style="background:#000;opacity:0;z-index:70"></div>
+<div class="vign"></div><div class="scan"></div>
+
+<script>
+let D,SPR,SKIN='#c98a5a',JERSEY='#1d3fd0';const $=s=>document.getElementById(s);
+const cl=x=>Math.max(0,Math.min(1,x)),P=(t,a,b)=>cl((t-a)/(b-a));
+const oc=x=>1-Math.pow(1-x,3),io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,oq=x=>1-Math.pow(1-x,5);
+const ob=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const snap=(v,g=6)=>Math.round(v/g)*g, blink=(t,p=.5)=>Math.floor(t/p)%2===0;
+const S={s1:[0,3.6],s2:[3.6,9.0],s3:[9.0,14.2],s4:[14.2,20.6],s5:[20.6,24.0],s6:[24.0,28.6],s7:[28.6,32]};
+const END=31.6;
+function vis(id,t){const [a,b]=S[id],L=$(id),on=t>=a-1e-3&&t<b+.3;L.style.display=on?'block':'none';if(!on)return null;
+  const ex=P(t,b,b+.3),en=id==='s1'?1:P(t,a,a+.2);L.style.opacity=Math.min(en,1-ex)>.5?1:Math.min(en,1-ex)*2;
+  L.style.transform=`translateY(${snap(-160*io(ex)+48*(1-oc(en)),8)}px)`;return t-a}
+const set=(id,css)=>Object.assign($(id).style,css);
+function rise(id,t,a,d=.4,dist=60){const x=oc(P(t,a,a+d));set(id,{visibility:x>0?'visible':'hidden',transform:`translateY(${snap(dist*(1-x))}px)`})}
+function seg(id,n,on,cls='on'){const el=$(id);if(el.children.length!==n)el.innerHTML='<span></span>'.repeat(n);[...el.children].forEach((s,i)=>s.className=i<on?cls:'')}
+// background: starfield + grid + turf, as on KPL HQ
+const R=(()=>{let s=1137;return()=>(s=(s*16807)%2147483647)/2147483647})();
+const stars=[...Array(140)].map(()=>({x:R()*1080,y:R()*1920,z:1+Math.floor(R()*3),c:R()}));
+function bg(t){const c=$('bg').getContext('2d');c.fillStyle='#020f3d';c.fillRect(0,0,1080,1920);
+  c.fillStyle='rgba(91,145,255,.07)';for(let x=0;x<1080;x+=48)c.fillRect(x,0,2,1920);for(let y=(t*60)%48;y<1920;y+=48)c.fillRect(0,y,1080,2);
+  for(const s of stars){const y=(s.y+t*s.z*70)%1920;c.fillStyle=s.c<.15?'#ffe32b':s.c<.25?'#ff1644':'rgba(207,224,255,'+(.25+s.z*.2)+')';c.fillRect(Math.round(s.x/4)*4,Math.round(y/4)*4,s.z*4,s.z*4)}
+  c.fillStyle='#0b3e28';c.fillRect(0,1760,1080,160);c.fillStyle='#35f377';for(let x=-(t*120%96);x<1080;x+=96)c.fillRect(x,1760,48,8);
+  c.fillStyle='rgba(248,251,255,.5)';for(let x=-(t*120%120);x<1080;x+=120)c.fillRect(x,1820,8,100)}
+function drawBust(cv,scale,dy=0){const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.clearRect(0,0,cv.width,cv.height);c.drawImage(SPR,0,dy*scale,SPR.width*scale,SPR.height*scale)}
+// block ring for fantasy points
+function ring(v,max,proj,show){const el=$('ring');const N=40;if(!el.children.length)el.innerHTML='<i></i>'.repeat(N);
+  [...el.children].forEach((b,i)=>{const a=-Math.PI/2+i/N*2*Math.PI,x=540+290*Math.cos(a),y=690+290*Math.sin(a);const isP=i===Math.round(proj/max*N);
+    Object.assign(b.style,{position:'absolute',left:snap(x-21,6)+'px',top:snap(y-21,6)+'px',width:'42px',height:'42px',background:isP&&show?'#f8fbff':(i<Math.round(v/max*N)?(i<N*proj/max?'#1d63e0':'#ffe32b'):'#0a1f5c'),boxShadow:'0 0 0 4px #000'+(isP&&show?',0 0 0 8px #ff1644':'')})})}
+// TD burst
+function burst(u){const c=$('burst').getContext('2d');c.clearRect(0,0,940,800);if(u<0)return;c.save();c.translate(470,330);
+  for(let i=0;i<16;i++){c.rotate(Math.PI/8);c.fillStyle=i%2?'rgba(255,209,0,.18)':'rgba(29,99,224,.35)';const r=snap(200+900*oc(cl(u/.6)),12);c.beginPath();c.moveTo(0,0);c.lineTo(r,-60);c.lineTo(r,60);c.fill()}c.restore();
+  for(let i=0;i<40;i++){const a=i*2.4,d=snap(40+560*oc(cl((u-.05)/1)),6)*(0.5+(i%5)/8);c.fillStyle=['#ffe32b','#ff1644','#f8fbff','#35f377'][i%4];c.fillRect(snap(470+Math.cos(a)*d,6),snap(330+Math.sin(a)*d*.8+120*u*u,6),12,12)}}
+// postgame sip scene (all in sprite pixels, scale 10)
+function sip(u){const cv=$('sip'),c=cv.getContext('2d'),S=10;c.imageSmoothingEnabled=false;c.clearRect(0,0,760,640);
+  const bob=(u>1.2&&u<3.4)?(Math.floor(u/.25)%2):0,bx=5,by=4+bob;
+  c.drawImage(SPR,bx*S,by*S,SPR.width*S,SPR.height*S);
+  const px=(x,y,col)=>{c.fillStyle=col;c.fillRect(x*S,y*S,S,S)};const INK='#0c0a14';
+  const mx=bx+SPR.mouth[0],my=by+SPR.mouth[1];
+  const rise=Math.round(30*(1-oc(P(u,.5,1.1))))+Math.round(3*io(P(u,3.4,3.8)));
+  const CW=16,cx=mx-7,cy=my+5+rise; // cup top-left (lid row)
+  // arm: jersey sleeve rising from the bottom-left edge to the hand
+  for(let y=cy+15;y<64;y++)for(let x=cx-7;x<cx-1;x++)px(x,y,(x===cx-7||x===cx-2)?INK:((y-cy)%7<2?'#ffd100':JERSEY));
+  // straw: red/white stripes from lid up to the mouth
+  for(let y=my;y<cy;y++){px(mx,y,(y%2)?'#f8fbff':'#ff1644');px(mx+1,y,INK)}
+  if(u>1.25&&u<3.4)for(let k=0;k<2;k++){const yy=cy-1-Math.floor(((u*14)+k*3)%(cy-my));if(yy>=my)px(mx,yy,'#2ee6d3')}
+  // lid
+  for(let x=2;x<CW-2;x++)px(cx+x,cy-1,INK);for(let x=1;x<CW-1;x++)px(cx+x,cy,'#f8fbff');px(cx,cy,INK);px(cx+CW-1,cy,INK);
+  for(let x=0;x<CW;x++)px(cx+x,cy+1,'#cfe0ff');
+  // body: 20 rows, tapering, translucent; teal drains; purple label band rows 5-11
+  const ROWS=20,level=Math.round(17-12*P(u,1.3,3.3));
+  for(let r=0;r<ROWS;r++){const y=cy+2+r,ins=Math.floor(r/7),x0=cx+ins,x1=cx+CW-1-ins;px(x0,y,INK);px(x1,y,INK);
+    for(let x=x0+1;x<x1;x++){const liquid=r>=ROWS-level;let col=liquid?((x===x0+1)?'#7ff5e6':'#17c3b2'):'#e4f2ff';if(liquid&&((x*7+y*3)%13===0))col='#e8fffb';
+      if(r>=5&&r<=11)col=(r===5||r===11)?'#2a145e':'#5b2ca0';px(x,y,col)}}
+  for(let x=cx+3;x<cx+CW-3;x++)px(x,cy+2+ROWS,INK);
+  c.fillStyle='#f8fbff';c.font='20px PS2P';c.textAlign='center';c.fillText('BAJA',(cx+CW/2)*S,(cy+10)*S-4);c.fillText('BLAST',(cx+CW/2)*S,(cy+12)*S+6);
+  // hand: four finger bars wrapping the front-left of the cup, thumb on top
+  for(let f=0;f<4;f++){const y=cy+15+f;for(let x=cx-2;x<cx+5;x++)px(x,y,x===cx+4?'#8c4a24':SKIN);px(cx-3,y,INK);px(cx+5,y,INK)}
+  for(let x=cx-3;x<cx+6;x++){px(x,cy+14,INK);px(x,cy+19,INK)}
+  for(let y=cy+11;y<cy+14;y++){px(cx-1,y,SKIN);px(cx,y,SKIN);px(cx-2,y,INK);px(cx+1,y,INK)}px(cx-1,cy+10,INK);px(cx,cy+10,INK);
+  // sparkles after the sip
+  if(u>3.5)for(const [sx,sy,ph] of [[14,10,0],[62,14,.2],[58,40,.4],[10,36,.6]]){if(blink(u+ph,.2)){px(sx,sy,'#ffe32b');px(sx-1,sy,'#ffe32b');px(sx+1,sy,'#ffe32b');px(sx,sy-1,'#ffe32b');px(sx,sy+1,'#ffe32b')}}}
+function render(t){bg(t);let u;
+  if((u=vis('s1',t))!==null){
+    set('stripe',{transform:`translateX(${snap(-1800*(1-io(P(u,0,.6))),12)}px) skewY(-6deg)`});
+    const lx=ob(P(u,.3,.9));set('s1logo',{transform:`scale(${Math.round(lx*8)/8})`,visibility:u>.3?'visible':'hidden'});
+    rise('s1k',u,.5,.4,30);
+    $('bust1').style.top=snap(520*(1-oq(P(u,.6,1.3))),10)+'px';drawBust($('bust1'),10);
+    set('s1a',{transform:`translateY(${snap(105*(1-oq(P(u,1.2,1.7))),10)}%)`});set('s1b',{transform:`translateY(${snap(105*(1-oq(P(u,1.35,1.85))),10)}%)`});
+    rise('s1c',u,1.8,.4,40);rise('s1d',u,2.05,.4,40)}
+  if((u=vis('s2',t))!==null){
+    set('s2rule',{width:snap(560*oc(P(u,0,.6)),24)+'px'});rise('s2k',u,.1,.4,24);
+    $('s2big').textContent=Math.round(184*oc(P(u,.3,2.0)));rise('s2lbl',u,.5,.4,30);
+    rise('s2bar',u,.2,.4,24);seg('s2seg',40,Math.round(40*184/200*io(P(u,.3,2.0))));
+    [['t1',2.0,v=>Math.round(32*v)],['t2',2.2,v=>(Math.round(57.5*v)/10).toFixed(1)],['t3',2.4,v=>Math.round(v)]].forEach(([id,a,f])=>{rise(id,u,a,.45,90);$(id+'v').textContent=f(oc(P(u,a,a+.9)))});
+    const b=ob(P(u,3.4,3.8));set('s2badge',{transform:`scale(${Math.round(b*10)/10})`,transformOrigin:'left center',visibility:u>3.4?'visible':'hidden'});
+    $('s2badge').firstChild.style.color=blink(u,.3)||u>4.6?'#35f377':'#f8fbff'}
+  if((u=vis('s3',t))!==null){
+    set('s3rule',{width:snap(400*oc(P(u,0,.6)),24)+'px'});
+    const v=31.5*io(P(u,.3,2.3));ring(v,35,D.player.proj,u>.2);$('s3pts').textContent=v.toFixed(1);
+    $('s3pl').textContent='WHITE BLOCK = PROJECTED '+D.player.proj.toFixed(1);rise('s3pl',u,.5,.4,20);
+    rise('s3a',u,2.2,.45,70);$('s3o').textContent='+'+((D.player.pts-D.player.proj)*oc(P(u,2.2,3.1))).toFixed(1);$('s3x').textContent=(D.player.pts/D.player.proj*oc(P(u,2.3,3.2))).toFixed(1)+'X';
+    rise('s3b',u,3.0,.45,70);const sh=D.player.pts/D.fantasy.et.score;seg('s3seg',30,Math.round(30*sh*io(P(u,3.2,4.1))));$('s3pct').textContent=Math.round(100*sh*oc(P(u,3.2,4.1)))+'%'}
+  if((u=vis('s4',t))!==null){
+    set('s4rule',{width:snap(380*oc(P(u,0,.6)),24)+'px'});
+    const ci=D.plays.findIndex(p=>p.corum),times=D.plays.map((p,i)=>i<=ci?.4+i*.32:.4+ci*.32+2.6+(i-ci)*.35);let last=null;
+    document.querySelectorAll('.row').forEach((r,i)=>{const a=times[i],x=oc(P(u,a,a+.4));r.style.visibility=x>0?'visible':'hidden';r.style.transform=`translateX(${snap((i%2?-1:1)*160*(1-x),8)}px)`;if(u>=a+.1)last=D.plays[i]});
+    $('slar').textContent=last?last.lar:0;$('sgb').textContent=last?last.gb:0;
+    const ta=times[ci]+.35,inn=P(u,ta,ta+.4),out=io(P(u,ta+2.0,ta+2.35));$('tdcard').style.display=(u>ta&&u<ta+2.35)?'block':'none';
+    set('tdcard',{transform:`scale(${Math.round(((.5+.5*ob(inn))*(1-.25*out))*20)/20}) translateY(${snap(out*200,8)}px)`});
+    burst(u-ta);set('tdword',{transform:`translateY(${snap(110*(1-oq(P(u,ta+.15,ta+.55))),10)}%)`});
+    const b2=$('bust2');drawBust(b2,4);b2.style.top=(228-(blink(u,.2)&&u<ta+1.6?12:0))+'px';
+    rise('tdname',u,ta+.45,.35,30);rise('tdplay',u,ta+.6,.35,30);rise('tdtie',u,ta+.8,.4,40)}
+  if((u=vis('s5',t))!==null){
+    set('s5rule',{width:snap(460*oc(P(u,0,.6)),24)+'px'});
+    const a=oc(P(u,.1,.6)),b=oc(P(u,.25,.75));set('m1',{transform:`translateX(${snap(-600*(1-a),12)}px)`});set('m2',{transform:`translateX(${snap(600*(1-b),12)}px)`});
+    set('mvs',{transform:`scale(${Math.round(ob(P(u,.6,.95))*8)/8})`});
+    $('m1s').textContent=(D.fantasy.et.score*oc(P(u,.6,1.5))).toFixed(1);$('m2s').textContent=(D.fantasy.opp.score*oc(P(u,.7,1.5))).toFixed(1);
+    rise('duel',u,1.1,.45,70);const mx=Math.max(D.player.pts,D.fantasy.oppTop.pts);
+    seg('d1',20,Math.round(20*D.player.pts/mx*io(P(u,1.4,2.2))),'lar');seg('d2',20,Math.round(20*D.fantasy.oppTop.pts/mx*io(P(u,1.5,2.2))),'gbc');
+    $('d1v').textContent=(D.player.pts*oc(P(u,1.4,2.2))).toFixed(1);$('d2v').textContent=(D.fantasy.oppTop.pts*oc(P(u,1.5,2.2))).toFixed(1)}
+  if((u=vis('s6',t))!==null){
+    set('s6rule',{width:snap(560*oc(P(u,0,.6)),24)+'px'});
+    $('sip').style.top=snap(140+640*(1-oq(P(u,.05,.5))),10)+'px';sip(u);
+    let txt='',sh=0;if(u>1.3&&u<3.4){const w='SLURRRRP';txt=w.slice(0,Math.min(w.length,1+Math.floor((u-1.3)/.12)));sh=blink(u,.1)?6:-6}else if(u>=3.5){txt='AHHH!'}
+    $('slurp').textContent=txt;$('slurp').style.transform=`translateX(${sh}px)`;$('slurp').style.color=u>=3.5?'#35f377':'#ffe32b';
+    rise('s6a',u,.7,.45,50)}
+  if((u=vis('s7',t))!==null){
+    set('s7logo',{transform:`scale(${Math.round(ob(P(u,0,.5))*8)/8})`});rise('s7a',u,.2,.4,50);rise('s7b',u,.45,.4,50);rise('s7c',u,.7,.4,30);rise('s7d',u,.9,.4,30);
+    $('s7e').style.visibility=u>1.4&&blink(u,.3)?'visible':'hidden'}
+  $('fade').style.opacity=Math.round(P(t,END-.5,END)*8)/8}
+window.setData=async d=>{D=d;
+  SPR=new Image();SPR.src='../../assets/players/4429096_hero.png';await SPR.decode();SPR.mouth=[33,26];
+  // sample skin + jersey colours from the sprite itself
+  SKIN=d.sprite.skin;JERSEY=d.sprite.jersey;
+  $('s1d').textContent='GB @ LAR · '+D.game.venue+' · '+D.game.status+' '+D.game.lar+'-'+D.game.gb;
+  $('rows').innerHTML=D.plays.map((p,i)=>`<div class="abs row ${p.corum?'hl':'frame'}" style="top:${420+i*106}px"><span class="q">Q${p.q}<br>${p.clock}</span><span class="tm" style="background:${p.team==='LAR'?D.game.larColor:D.game.gbColor};color:${p.team==='LAR'?D.game.larAlt:D.game.gbAlt}">${p.team}</span><span class="tx">${p.text}</span><span class="sc">${p.lar}-${p.gb}</span></div>`).join('');
+  const when=new Date(D.asof).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/New_York'}).toUpperCase()+' ET';
+  $('s3asof').textContent='CORUM '+D.player.pts.toFixed(1)+' OF '+D.fantasy.et.score.toFixed(1)+' E-TEAM PTS · MATCHUP LIVE · AS OF '+when;
+  $('d2n').innerHTML=D.fantasy.oppTop.name.replace(/^(\w)\w+ /,'$1. ')+' <span class="ice">'+D.fantasy.oppTop.team+'</span>';
+  $('m_asof').textContent='KPL WEEK 12 MATCHUP STILL LIVE · AS OF '+when};
+window.render=render;
+</script></body></html>

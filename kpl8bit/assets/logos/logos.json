@@ -1,0 +1,18 @@
+{
+ "note": "data-logo letter for each KPL team, keyed by ESPN team slot (team id). Logos come from the KPL HQ site sprite sheets (spriteA.png, spriteB.png); CSS in lib/kpl8.css. Team names are as of the 2026 season; use the site feed for current names.",
+ "league": "league",
+ "slots": {
+  "1": {"logo": "c", "name": "CK Coalition"},
+  "2": {"logo": "s", "name": "The T Series"},
+  "3": {"logo": "k", "name": "KeelDawgs"},
+  "4": {"logo": "m", "name": "Manges Militia"},
+  "5": {"logo": "t", "name": "Team Bliss"},
+  "6": {"logo": "h", "name": "House of Heck"},
+  "7": {"logo": "b", "name": "Big Balls Blum"},
+  "8": {"logo": "u", "name": "Corgi's Underdog Kennel"},
+  "9": {"logo": "e", "name": "The E-Team"},
+  "10": {"logo": "w", "name": "Baja Boyz"},
+  "11": {"logo": "r", "name": "Ronnies Regime"},
+  "12": {"logo": "v", "name": "Bayshore BarSlugs"}
+ }
+}

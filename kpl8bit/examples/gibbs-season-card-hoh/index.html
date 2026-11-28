@@ -1,0 +1,187 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Gibbs HoH Card</title>
+<style>
+@font-face{font-family:PS2P;src:url(../../assets/fonts/ps2p.woff2)}
+:root{--ink:#0b0306;--night:#14040a;--maroon:#6b161b;--blood:#bf362b;--red:#e0202a;--bone:#efe2d0;--silver:#c6b0a3;--amber:#f2a52b;--gold:#ffd27a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+body{font-family:PS2P,monospace;color:var(--bone);position:relative;-webkit-font-smoothing:none;line-height:1.25}
+canvas{position:absolute;left:0;top:0;image-rendering:pixelated}
+#stage{position:absolute;inset:0}
+.abs{position:absolute}.c{text-align:center;left:0;width:100%}
+.scene{position:absolute;inset:0;display:none}
+.am{color:var(--amber)}.rd{color:var(--blood)}.sv{color:var(--silver)}
+.sh{text-shadow:4px 4px 0 #000}.big{text-shadow:7px 7px 0 var(--maroon),11px 11px 0 #000}
+.logo{display:block;background-repeat:no-repeat;flex:none}
+[data-logo=h]{background-image:url(../../assets/logos/spriteB.png);background-size:299.4152% 498.7013%;background-position:8.5044% 28.013%;aspect-ratio:342/308}
+[data-logo=league]{background-image:url(../../assets/logos/spriteB.png);background-size:781.6794% 1129.4118%;background-position:50.056% 1.2857%;aspect-ratio:131/136;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%)}
+.pf{box-shadow:0 0 0 6px #000,0 0 0 12px var(--silver),0 0 0 18px #000,0 24px 0 0 #2a0508,0 24px 0 6px #000}
+.pf.red{box-shadow:0 0 0 6px #000,0 0 0 12px var(--blood),0 0 0 18px #000,0 24px 0 0 #2a0508,0 24px 0 6px #000}
+.stripes{background-image:repeating-linear-gradient(135deg,rgba(0,0,0,.28) 0 24px,transparent 24px 48px)}
+#bug{position:absolute;left:60px;top:140px;display:flex;align-items:center;gap:16px;z-index:40;background:#000;padding:10px 18px 10px 10px;box-shadow:0 0 0 4px var(--blood),0 0 0 8px #000}
+#bug .logo{width:70px}#bug b{font-weight:400;font-size:20px}#bug i{font-style:normal;display:block;font-size:14px;color:var(--blood);margin-top:8px}
+/* the card */
+#cardWrap{position:absolute;left:110px;top:360px;width:860px;height:1250px;perspective:1800px}
+#card{position:absolute;inset:0;transform-style:preserve-3d}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:linear-gradient(180deg,#2a070b,#150307);border-radius:4px;overflow:hidden}
+#back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;background-color:var(--maroon)}
+.hd{position:absolute;left:0;right:0;top:0;height:70px;background:#000;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:18px}
+.chip{background:var(--blood);color:#000;padding:10px 14px;font-size:18px;box-shadow:0 0 0 3px #000}
+#art{position:absolute;left:20px;right:20px;top:90px;height:560px;background-color:#5a1016;box-shadow:inset 0 0 0 6px #000,inset 0 -30px 60px rgba(0,0,0,.6);overflow:hidden}
+#moon{position:absolute;left:250px;top:50px;width:320px;height:320px}
+#ghost{position:absolute;right:24px;top:28px;font-size:190px;line-height:1;color:transparent;-webkit-text-stroke:8px rgba(239,226,208,.18)}
+#spr{position:absolute;left:0;bottom:0;width:820px;height:540px}
+#holo{position:absolute;top:-400px;left:-500px;width:260px;height:2400px;transform:rotate(20deg);mix-blend-mode:screen;background:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 26px,rgba(255,90,60,.30) 26px 52px,rgba(242,165,43,.34) 52px 78px,rgba(239,226,208,.36) 78px 104px,rgba(255,255,255,0) 104px 130px)}
+.c3{width:250px;height:150px;background:#000;box-shadow:0 0 0 4px var(--silver),0 0 0 8px #000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.c3 b{font-weight:400;font-size:42px;color:var(--amber);text-shadow:4px 4px 0 var(--maroon)}.c3 i{font-style:normal;font-size:13px;color:var(--silver);line-height:1.5}
+.st{position:absolute;width:458px;height:236px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,#2a070b,#150307)}
+.st b{font-weight:400;font-size:74px;color:var(--amber);text-shadow:6px 6px 0 var(--maroon),9px 9px 0 #000}
+.st i{font-style:normal;font-size:18px;color:var(--silver)}
+.sec{position:absolute;left:70px;font-size:20px;color:var(--blood);text-shadow:3px 3px 0 #000}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:50}
+.scan{position:absolute;inset:0;z-index:60;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 2px,transparent 2px 6px)}
+.vign{position:absolute;inset:0;z-index:59;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.7) 100%)}
+</style></head>
+<body>
+<canvas id="bg" width="1080" height="1920"></canvas>
+<div id="stage">
+  <div class="scene" id="A">
+    <span class="logo abs" data-logo="h" id="Alogo" style="left:240px;top:420px;width:600px"></span>
+    <div class="abs c sh sv" id="A1" style="top:1000px;font-size:24px"></div>
+    <div class="abs c big" id="A2" style="top:1070px;font-size:44px;color:var(--bone)">THE CARD</div>
+  </div>
+  <div class="scene" id="F">
+    <div class="abs c big am" id="F1" style="top:1110px;font-size:74px">#1 IN THE KPL</div>
+    <div class="abs c sh" id="F2" style="top:1220px;font-size:28px;line-height:1.7"></div>
+    <div class="abs c" id="F3" style="top:1390px"><div class="sh rd" style="font-size:28px">FOLLOW LIVE ON KPL HQ</div><div class="sv" style="font-size:18px;margin-top:20px">KPLHQ.KPLREDZONE.WORKERS.DEV</div></div>
+  </div>
+  <div id="cardWrap"><div id="card">
+    <div class="face pf" id="front">
+      <div class="hd"><span class="sv">KPL HQ · 2026</span><span class="chip" id="posChip">RB</span></div>
+      <div id="art" class="stripes"><canvas id="moon" width="320" height="320"></canvas><div id="ghost">#1</div><canvas id="spr" width="820" height="540"></canvas></div>
+      <div class="abs c big" id="cName" style="top:676px;font-size:52px">JAHMYR GIBBS</div>
+      <div class="abs c sv" id="cSub" style="top:752px;font-size:17px"></div>
+      <div class="abs c" id="cTot" style="top:800px"><span id="tot" style="font-size:112px;color:var(--amber);text-shadow:7px 7px 0 var(--maroon),11px 11px 0 #000">0.0</span><div class="sv" style="font-size:16px;margin-top:14px">FANTASY PTS · WEEKS 1-12</div></div>
+      <div class="abs" id="cChips" style="left:30px;right:30px;top:1000px;display:flex;justify-content:space-between"></div>
+      <div class="abs" style="left:0;right:0;top:1176px;height:74px;background:#000;display:flex;align-items:center;justify-content:center;gap:16px;font-size:18px"><span class="logo" data-logo="h" style="width:66px"></span><span id="cFoot"></span></div>
+      <div id="holo"></div><canvas id="spark" width="860" height="1250"></canvas>
+    </div>
+    <div class="face pf red stripes" id="back"><span class="logo" data-logo="league" style="width:300px"></span></div>
+  </div></div>
+  <div class="scene" id="C">
+    <div class="abs sh rd" style="left:70px;top:300px;font-size:20px">SEASON STATS · WEEKS 1-12</div>
+    <div class="abs big am" style="left:70px;top:345px;font-size:52px">BY THE NUMBERS</div>
+    <div class="sec" id="secR" style="top:470px">RUSHING</div><div class="sec" id="secC" style="top:1060px">RECEIVING + TOTALS</div>
+    <div id="Cgrid"></div>
+  </div>
+  <div class="scene" id="D">
+    <div class="abs sh rd" style="left:70px;top:300px;font-size:20px">FANTASY POINTS BY WEEK</div>
+    <div class="abs big am" style="left:70px;top:345px;font-size:52px">WEEK BY WEEK</div>
+    <canvas id="chart" width="1080" height="1920"></canvas>
+    <div id="Dlabs"></div>
+    <div class="abs c sh" id="Dnote" style="top:1530px;font-size:18px;line-height:1.8"></div>
+  </div>
+  <div class="scene" id="E">
+    <div class="abs c sh rd" id="E0" style="top:300px;font-size:24px">WEEK 12 · THANKSGIVING</div>
+    <div class="abs c big" id="E1" style="top:350px;font-size:60px">SEASON HIGH</div>
+    <div class="abs pf red" id="Eframe" style="left:290px;top:480px;width:500px;height:380px;overflow:hidden;background:#3a070c"><canvas id="Efire" width="500" height="380"></canvas><canvas id="Espr" width="500" height="380"></canvas></div>
+    <div class="abs c" id="E2" style="top:910px"><span id="Epts" style="font-size:150px;color:var(--amber);text-shadow:8px 8px 0 var(--maroon),12px 12px 0 #000">0.0</span><div class="sv" style="font-size:20px;margin-top:16px">FANTASY PTS</div></div>
+    <div class="abs c sh" id="E3" style="top:1150px;font-size:30px;line-height:1.8"></div>
+    <div class="abs c" id="E4" style="top:1310px"><span class="chip" style="font-size:20px;padding:14px 18px">200-YD RUSH BONUS +7</span></div>
+    <div class="abs c sv" id="E5" style="top:1420px;font-size:18px"></div>
+  </div>
+</div>
+<div id="bug"><span class="logo" data-logo="h"></span><div><b>KPL HQ</b><i>HOUSE OF HECK</i></div></div>
+<canvas id="fx" width="1080" height="1920" style="z-index:45"></canvas>
+<div id="flash"></div><div class="vign"></div><div class="scan"></div>
+<script>
+let D,SPR;const $=s=>document.getElementById(s);
+const cl=x=>Math.max(0,Math.min(1,x)),P=(t,a,b)=>cl((t-a)/(b-a));
+const oc=x=>1-Math.pow(1-x,3),io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,sine=x=>-(Math.cos(Math.PI*x)-1)/2,oq=x=>1-Math.pow(1-x,5);
+const spr=x=>x<=0?0:x>=1?1:1-Math.exp(-6.5*x)*Math.cos(8.5*x);
+const set=(id,css)=>Object.assign((typeof id==='string'?$(id):id).style,css);
+function fin(el,u,a,d=.7,dy=60,dx=0){const x=P(u,a,a+d),e=spr(x),E=typeof el==='string'?$(el):el;E.style.opacity=Math.min(1,x*2.4);E.style.transform=`translate(${(1-e)*dx}px,${(1-e)*dy}px)`}
+const fmt=v=>Math.round(v).toLocaleString('en-US');
+const TL=[['A',0,3.2],['B',3.2,9.4],['C',9.4,15.4],['D',15.4,21.8],['E',21.8,27.2],['F',27.2,31.6]];const END=31.6;
+// ---------- haunted night background ----------
+const R=(()=>{let s=1666;return()=>(s=(s*16807)%2147483647)/2147483647})();
+const embers=[...Array(70)].map(()=>({x:R()*1080,y:R()*1920,s:.4+R(),c:R()}));
+const bats=[...Array(6)].map((_,i)=>({y:260+R()*900,sp:60+R()*70,ph:R()*1000,sc:R()<.5?4:6}));
+const BAT=[['..x.....x..','..xx...xx..','.xxxxxxxxx.','xxx.xxx.xxx','x....x....x'],['...........','..x.....x..','.xxxxxxxxx.','xxxxxxxxxxx','.x.......x.']];
+const CASTLE=(()=>{const h=[];for(let x=0;x<1080;x+=12){let y=1780-((Math.sin(x*.011)+1)*30);if((x>120&&x<240)||(x>780&&x<900))y=1600;if(x>420&&x<660)y=1540;if((x>140&&x<170)||(x>800&&x<830))y=1500;if(x>520&&x<560)y=1440;h.push([x,Math.round(y/12)*12])}return h})();
+function bg(t){const c=$('bg').getContext('2d');const g=c.createLinearGradient(0,0,0,1920);g.addColorStop(0,'#0b0306');g.addColorStop(.6,'#1a0508');g.addColorStop(1,'#2a070b');c.fillStyle=g;c.fillRect(0,0,1080,1920);
+  c.fillStyle='rgba(191,54,43,.06)';for(let x=0;x<1080;x+=48)c.fillRect(x,0,2,1920);for(let y=(t*30)%48;y<1920;y+=48)c.fillRect(0,y,1080,2);
+  for(const e of embers){const y=1920-((1920-e.y+t*90*e.s)%1920),x=e.x+Math.sin(t*1.3+e.y)*20;c.fillStyle=e.c<.4?'#f2a52b':e.c<.75?'#bf362b':'#efe2d0';c.globalAlpha=.25+.5*e.s*(y/1920);c.fillRect(Math.round(x/4)*4,Math.round(y/4)*4,e.s>1?8:4,e.s>1?8:4)}c.globalAlpha=1;
+  for(const b of bats){const x=((t*b.sp+b.ph)%1300)-110,f=BAT[Math.floor(t*8+b.ph)%2],S=b.sc;c.fillStyle='#000';f.forEach((r,yy)=>[...r].forEach((ch,xx)=>{if(ch==='x')c.fillRect(Math.round(x)+xx*S,Math.round(b.y+Math.sin(t*2+b.ph)*30)+yy*S,S,S)}))}
+  // castle skyline with flickering windows
+  c.fillStyle='#050103';CASTLE.forEach(([x,y])=>c.fillRect(x,y,12,1920-y));
+  for(let i=0;i<26;i++){const x=60+((i*173)%960),y=1620+((i*97)%220);const on=Math.sin(t*(1.3+i%3)+i*7)>-.6;if(!on)continue;const cx=CASTLE.find(p=>p[0]<=x&&x<p[0]+12);if(!cx||y<cx[1]+24)continue;c.fillStyle=i%4?'#f2a52b':'#bf362b';c.fillRect(Math.round(x/6)*6,Math.round(y/6)*6,12,18)}}
+function moon(cv,t,R0=150){const c=cv.getContext('2d');c.clearRect(0,0,cv.width,cv.height);const cx=cv.width/2,cy=cv.height/2,S=10;
+  for(let y=-R0;y<=R0;y+=S)for(let x=-R0;x<=R0;x+=S){const d=Math.hypot(x,y);if(d>R0)continue;const k=d/R0;c.fillStyle=k>.9?'#7a1410':k>.7?'#a8261c':((x*7+y*3)%9===0?'#a8261c':'#d0402e');c.fillRect(cx+x,cy+y,S,S)}
+  c.globalAlpha=.25+.1*Math.sin(t*2);c.fillStyle='#ff6a3d';c.beginPath();c.arc(cx,cy,R0+20,0,7);c.fill();c.globalAlpha=1}
+function drawSpr(cv,scale){const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.clearRect(0,0,cv.width,cv.height);const w=SPR.width*scale,h=SPR.height*scale;c.drawImage(SPR,Math.round((cv.width-w)/2),cv.height-h,w,h)}
+function sparkles(u){const c=$('spark').getContext('2d');c.clearRect(0,0,860,1250);for(let i=0;i<26;i++){const x=(i*233)%840+10,y=(i*419)%1220+10,a=Math.max(0,Math.sin(u*3+i*1.7));if(a<.6)continue;c.globalAlpha=(a-.6)*2.5;c.fillStyle=i%3?'#efe2d0':'#f2a52b';c.fillRect(x,y-8,4,20);c.fillRect(x-8,y,20,4)}c.globalAlpha=1}
+// ---------- card ----------
+function buildCard(){const S=D;$('cSub').textContent=`${S.pos} · DETROIT LIONS · HOUSE OF HECK`;
+  $('cChips').innerHTML=[['#'+S.leagueRank,'IN KPL<br>LINEUP PTS'],[S.avg.toFixed(1),'FANTASY PTS<br>PER GAME'],[String(S.games),'GAMES<br>PLAYED']].map((x,i)=>`<div class="c3" id="cc${i}"><b>${x[0]}</b><i>${x[1]}</i></div>`).join('');
+  $('cFoot').textContent=`HOUSE OF HECK · ${S.hohRec} · 1ST IN KPL`;drawSpr($('spr'),9)}
+function cardPose(t){// where the card lives in each scene, and its gentle float
+  let s=1,x=0,y=0,op=1,ry=0;const tB=TL[1][1];
+  if(t<2.1)op=0;else if(t<tB){const p=oq(P(t,2.1,2.9));s=.3+.7*p;ry=180+(1-p)*540;y=(1-p)*500;const f=sine(P(t,2.9,tB));ry=180-180*f}
+  else if(t<TL[2][1]-.4){}
+  else if(t<TL[2][1]+.1){const p=io(P(t,TL[2][1]-.4,TL[2][1]+.1));x=-1300*p;ry=-25*p}
+  else if(t<TL[5][1]){op=0}
+  else {const p=spr(P(t,TL[5][1],TL[5][1]+.9));s=.62;y=-330;x=(1-p)*1300;ry=(1-p)*30}
+  ry+=Math.sin(t*1.2)*5;const rx=Math.cos(t*.9)*3;
+  $('cardWrap').style.opacity=op;$('cardWrap').style.transform=`translate(${x}px,${y+Math.sin(t*1.5)*8}px) scale(${s})`;$('card').style.transform=`rotateY(${ry}deg) rotateX(${rx}deg)`}
+function renderCard(u){moon($('moon'),u);$('tot').textContent=(D.fpts*sine(P(u,.6,2.4))).toFixed(1);
+  $('tot').style.textShadow=`7px 7px 0 #6b161b,11px 11px 0 #000,0 0 ${u>2.4?18+10*Math.sin(u*4):0}px #f2a52b`;
+  fin('cName',u,.25,.7,40);fin('cSub',u,.4,.6,30);[0,1,2].forEach(i=>{const el=$('cc'+i);const p=spr(P(u,1.6+i*.15,2.4+i*.15));el.style.transform=`scale(${p})`;el.style.opacity=P(u,1.6+i*.15,1.75+i*.15)});
+  set('holo',{transform:`translateX(${-200+1900*io(P((u%3.1),.3,1.6))}px) rotate(20deg)`});sparkles(u);
+  set('ghost',{transform:`translateX(${(1-spr(P(u,.3,1.1)))*300}px)`})}
+// ---------- stats grid ----------
+function buildC(){const S=D;const items=[[S.car,'CARRIES'],[S.ryd,'RUSH YARDS'],[S.ypc,'YARDS / CARRY',1],[S.rtd,'RUSH TD'],[S.rec,'RECEPTIONS'],[S.cyd,'REC YARDS'],[S.ttd,'TOTAL TD'],[S.scrim,'SCRIMMAGE YDS']];
+  $('Cgrid').innerHTML=items.map((x,i)=>{const col=i%2,row=Math.floor(i/2),y=(row<2?520:1110)+(row%2)*270;return `<div class="st pf" id="sg${i}" style="left:${70+col*482}px;top:${y}px"><b data-v="${x[0]}" data-d="${x[2]||0}">0</b><i>${x[1]}</i></div>`}).join('')}
+function renderC(u){fin('secR',u,.2,.5,-20);fin('secC',u,1.4,.5,-20);
+  document.querySelectorAll('#Cgrid .st').forEach((el,i)=>{const a=.35+i*.17+(i>=4?.5:0);fin(el,u,a,.8,0,i%2?300:-300);const b=el.querySelector('b'),v=+b.dataset.v,e=sine(P(u,a+.1,a+1.1));
+    b.textContent=+b.dataset.d?(v*e).toFixed(1):fmt(v*e);b.style.textShadow=`6px 6px 0 #6b161b,9px 9px 0 #000,0 0 ${u>a+1.1?14+8*Math.sin(u*4+i):0}px #f2a52b`})}
+// ---------- weekly chart ----------
+const CX0=110,CX1=1000,CY=1420,CH=760;
+function buildD(){const W=D.weeks,n=W.length,bw=(CX1-CX0)/n;$('Dlabs').innerHTML=W.map((w,i)=>`<div class="abs sh" id="dl${i}" style="left:${CX0+i*bw}px;width:${bw}px;text-align:center;top:${CY+18}px;font-size:16px;color:#c6b0a3">W${w.wk}</div><div class="abs sh" id="dv${i}" style="left:${CX0+i*bw-10}px;width:${bw+20}px;text-align:center;font-size:${w.played?17:14}px;color:${w.pts>=40?'#f2a52b':'#efe2d0'}">${w.played?w.pts.toFixed(1):'BYE'}</div>`).join('');
+  $('Dnote').innerHTML=`<span class="am">${D.over20}</span> GAMES OF 20+ · <span class="am">${D.over40}</span> GAMES OF 40+<br><span class="rd">${D.share11}%</span> OF HOUSE OF HECK'S POINTS (WKS 1-11)`}
+function renderD(u){const c=$('chart').getContext('2d');c.clearRect(0,0,1080,1920);const W=D.weeks,n=W.length,bw=(CX1-CX0)/n,mx=60,sc=CH/mx;
+  c.globalAlpha=P(u,.3,.7);c.fillStyle='rgba(198,176,163,.12)';for(let v=0;v<=60;v+=10){c.fillRect(CX0,CY-v*sc,CX1-CX0,2)}c.fillStyle='#c6b0a3';c.font='14px PS2P';c.textAlign='right';for(let v=0;v<=60;v+=20)c.fillText(v,CX0-14,CY-v*sc+6);
+  c.fillStyle='#c6b0a3';c.fillRect(CX0,CY,CX1-CX0,4);c.globalAlpha=1;
+  W.forEach((w,i)=>{const a=.6+i*.17,p=spr(P(u,a,a+.8)),x=CX0+i*bw+10,bwid=bw-20;const lab=$('dv'+i),wl=$('dl'+i);wl.style.opacity=P(u,.3,.6);
+    if(!w.played){c.globalAlpha=P(u,a,a+.3);c.strokeStyle='#6b161b';c.lineWidth=4;c.strokeRect(x,CY-60,bwid,60);for(let k=0;k<60;k+=12){c.fillStyle='#6b161b';c.fillRect(x,CY-60+k,bwid,4)}c.globalAlpha=1;lab.style.top=(CY-96)+'px';lab.style.opacity=P(u,a+.2,a+.5);return}
+    const h=w.pts*sc*p,hot=w.pts>=40,col=w.wk===D.best.wk?'#ffd27a':hot?'#f2a52b':'#bf362b';c.shadowColor=col;c.shadowBlur=hot?26+10*Math.sin(u*5+i):12;c.fillStyle=col;c.fillRect(x,CY-h,bwid,h);c.shadowBlur=0;
+    c.fillStyle='rgba(255,255,255,.3)';c.fillRect(x,CY-h,bwid,8);c.fillStyle='rgba(0,0,0,.25)';c.fillRect(x+bwid-10,CY-h,10,h);
+    if(hot&&p>.95){for(let k=0;k<6;k++){const life=((u*1.4+k*.17+i*.31)%1);c.globalAlpha=1-life;c.fillStyle=k%2?'#f2a52b':'#ff6a3d';c.fillRect(x+((k*29+i*13)%bwid),CY-h-life*70,8,8)}c.globalAlpha=1}
+    lab.style.top=(CY-w.pts*sc-40)+'px';lab.style.opacity=P(u,a+.5,a+.8)});
+  // average line
+  const ap=sine(P(u,2.9,3.6)),ay=CY-D.avg*sc;if(ap>0){c.fillStyle='#efe2d0';for(let x=CX0;x<CX0+(CX1-CX0)*ap;x+=28)c.fillRect(x,ay,16,4);c.font='16px PS2P';c.textAlign='left';c.globalAlpha=P(u,3.4,3.7);c.fillText('AVG '+D.avg.toFixed(1),CX0+6,ay-14);c.globalAlpha=1}
+  // season-high crown
+  const bi=W.findIndex(w=>w.wk===D.best.wk),bx=CX0+bi*bw+bw/2,cp=spr(P(u,3.9,4.6));if(cp>0){const by=CY-D.best.pts*sc-80;c.save();c.translate(bx,by);c.scale(cp,cp);
+    c.fillStyle='#ffd27a';c.fillRect(-24,0,48,14);c.fillRect(-24,-14,8,14);c.fillRect(-4,-20,8,20);c.fillRect(16,-14,8,14);c.fillStyle='#bf362b';c.fillRect(-2,4,4,4);c.restore();
+    c.globalAlpha=P(u,4.2,4.5);c.fillStyle='#ffd27a';c.font='16px PS2P';c.textAlign='right';c.fillText('SEASON HIGH',bx+20,by-34);c.globalAlpha=1}
+  fin('Dnote',u,4.4,.8,40)}
+// ---------- spotlight ----------
+function renderE(u){fin('E0',u,0,.5,-30);const s=spr(P(u,.1,.6));set('E1',{transform:`scale(${.4+.6*s})`,opacity:P(u,.1,.25)});fin('Eframe',u,.4,.8,80);
+  const fc=$('Efire').getContext('2d');fc.clearRect(0,0,500,380);for(let i=0;i<160;i++){const life=((u*1.1+i*.0137)%1),x=(i*37)%500,y=380-life*380;fc.globalAlpha=(1-life)*.9;fc.fillStyle=life<.3?'#ffd27a':life<.6?'#f2a52b':'#bf362b';const z=life<.5?16:10;fc.fillRect(Math.round(x/8)*8,Math.round(y/8)*8,z,z)}fc.globalAlpha=1;
+  drawSpr($('Espr'),5.4);$('Epts').textContent=(D.best.pts*sine(P(u,.9,2.2))).toFixed(1);$('Epts').style.textShadow=`8px 8px 0 #6b161b,12px 12px 0 #000,0 0 ${u>2.2?24+12*Math.sin(u*5):0}px #f2a52b`;fin('E2',u,.8,.6,40);
+  const B=D.best;$('E3').innerHTML=`${B.car} CAR · <span class="am">${B.ryd} RUSH YDS</span> · ${B.rtd} TD<br>${B.rec} REC · ${B.cyd} YDS`;fin('E3',u,1.8,.7,40);
+  const ch=$('E4');ch.style.opacity=P(u,2.6,2.75);ch.style.transform=`scale(${spr(P(u,2.6,3.2))})`;$('E5').textContent='FINAL: CHI 39 · DET 35';fin('E5',u,3.0,.6,30)}
+function renderA(u){const p=P(u,.15,.55);set('Alogo',{transform:`scale(${p<1?2.6-1.6*oq(p):1+.02*Math.sin(u*3)})`,opacity:P(u,.15,.3),filter:`drop-shadow(0 0 ${30+15*Math.sin(u*4)}px rgba(224,32,42,.8))`});
+  const w='HOUSE OF HECK PRESENTS';$('A1').textContent=w.slice(0,Math.floor(P(u,.6,1.4)*w.length+1e-4));fin('A2',u,1.4,.6,30);
+  const out=P(u,1.9,2.3);$('Alogo').style.opacity=Math.min(+$('Alogo').style.opacity,1-out);$('A1').style.opacity=1-out;$('A2').style.opacity=Math.min(+$('A2').style.opacity||0,1-out)}
+function renderF(u){fin('F1',u,.5,.7,40);$('F2').innerHTML=`<span class="am">${D.fpts.toFixed(1)}</span> FANTASY PTS · <span class="am">${D.ttd}</span> TD<br>${fmt(D.scrim)} SCRIMMAGE YARDS`;fin('F2',u,.8,.7,40);fin('F3',u,1.1,.7,30)}
+function fx(t){const c=$('fx').getContext('2d');c.clearRect(0,0,1080,1920);for(const s of TL.slice(1)){const d=t-s[1];if(d>-.25&&d<.25){const p=(d+.25)/.5;
+  ['#bf362b','#6b161b','#000'].forEach((col,i)=>{c.fillStyle=col;c.save();c.translate(540,960);c.rotate(-.5);c.fillRect(-2400+4800*io(cl(p*1.15-i*.06))-200,-1600,180+i*40,3200);c.restore()})}}
+  const k=Math.max(0,1-Math.abs(t-.55)/.15);$('flash').style.opacity=k*.7}
+function render(t){bg(t);fx(t);const sc=TL.find(s=>t>=s[1]&&t<s[2])||TL[TL.length-1],id=sc[0],u=t-sc[1];
+  for(const s of document.querySelectorAll('.scene'))s.style.display=s.id===id?'block':'none';
+  $('bug').style.display=t>2.9?'flex':'none';cardPose(t);renderCard(Math.max(0,t-TL[1][1]));
+  if(id==='A')renderA(u);if(id==='C')renderC(u);if(id==='D')renderD(u);if(id==='E')renderE(u);if(id==='F')renderF(u);
+  document.body.style.filter=t>END-.5?`brightness(${1-P(t,END-.5,END)})`:'none'}
+window.setData=async d=>{D=d;SPR=new Image();SPR.src='../../assets/players/4429795_hero.png';await SPR.decode();buildCard();buildC();buildD()};window.render=render;
+</script></body></html>

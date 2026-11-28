@@ -1,0 +1,170 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Gibbs Thanksgiving Card</title>
+<style>
+@font-face{font-family:PS2P;src:url(../../assets/fonts/ps2p.woff2)}
+:root{--navy:#020f3d;--deep:#031c69;--yellow:#ffe32b;--orange:#ff8a1f;--rust:#b8481a;--brown:#6b3612;--cream:#fff1d6;--ice:#cfe0ff;--ink:#c4002b;--det:#0076b6;--blood:#bf362b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--navy)}
+body{font-family:PS2P,monospace;color:var(--cream);position:relative;-webkit-font-smoothing:none;line-height:1.25}
+canvas{position:absolute;left:0;top:0;image-rendering:pixelated}
+#stage{position:absolute;inset:0}
+.abs{position:absolute}.c{text-align:center;left:0;width:100%}
+.scene{position:absolute;inset:0;display:none}
+.yl{color:var(--yellow)}.or{color:var(--orange)}.ice{color:var(--ice)}
+.sh{text-shadow:4px 4px 0 #000}.big{text-shadow:7px 7px 0 var(--rust),11px 11px 0 #000}
+.logo{display:block;background-repeat:no-repeat;flex:none}
+[data-logo=h]{background-image:url(../../assets/logos/spriteB.png);background-size:299.4152% 498.7013%;background-position:8.5044% 28.013%;aspect-ratio:342/308}
+[data-logo=k]{background-image:url(../../assets/logos/spriteB.png);background-size:290.9091% 478.5047%;background-position:91.369% 27.4897%;aspect-ratio:352/321}
+[data-logo=league]{background-image:url(../../assets/logos/spriteB.png);background-size:781.6794% 1129.4118%;background-position:50.056% 1.2857%;aspect-ratio:131/136;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%)}
+.pf{box-shadow:0 0 0 6px #000,0 0 0 12px var(--orange),0 0 0 18px #000,0 24px 0 0 var(--brown),0 24px 0 6px #000}
+.pfy{box-shadow:0 0 0 6px #000,0 0 0 12px var(--yellow),0 0 0 18px #000,0 24px 0 0 #7a5d00,0 24px 0 6px #000}
+.stripes{background-image:repeating-linear-gradient(135deg,rgba(0,0,0,.22) 0 24px,transparent 24px 48px)}
+#bug{position:absolute;left:60px;top:140px;display:flex;align-items:center;gap:16px;z-index:40;background:#000;padding:10px 18px 10px 10px;box-shadow:0 0 0 4px var(--orange),0 0 0 8px #000}
+#bug .logo{width:54px}#bug b{font-weight:400;font-size:20px}#bug i{font-style:normal;display:block;font-size:14px;color:var(--orange);margin-top:8px}
+#cardWrap{position:absolute;left:110px;top:360px;width:860px;height:1250px;perspective:1800px}
+#card{position:absolute;inset:0;transform-style:preserve-3d}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:linear-gradient(180deg,#0b37ad 0,#062b96 38%,#031c69 100%);overflow:hidden}
+#back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;background-color:var(--rust)}
+.hd{position:absolute;left:0;right:0;top:0;height:70px;background:#000;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:18px}
+.chip{background:var(--orange);color:#000;padding:10px 14px;font-size:18px;box-shadow:0 0 0 3px #000}
+#art{position:absolute;left:20px;right:20px;top:90px;height:560px;background-color:#c25a1c;box-shadow:inset 0 0 0 6px #000;overflow:hidden}
+#artfx{position:absolute;left:0;top:0;width:820px;height:560px}
+#ghost{position:absolute;right:26px;top:26px;font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:7px rgba(255,241,214,.28)}
+#spr{position:absolute;left:0;bottom:0;width:820px;height:540px}
+#holo{position:absolute;top:-400px;left:-500px;width:260px;height:2400px;transform:rotate(20deg);mix-blend-mode:screen;background:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 26px,rgba(255,138,31,.30) 26px 52px,rgba(255,227,43,.34) 52px 78px,rgba(255,241,214,.36) 78px 104px,rgba(255,255,255,0) 104px 130px)}
+.c3{width:250px;height:150px;background:#000;box-shadow:0 0 0 4px var(--cream),0 0 0 8px #000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.c3 b{font-weight:400;font-size:40px;color:var(--yellow);text-shadow:4px 4px 0 var(--ink)}.c3 i{font-style:normal;font-size:13px;color:var(--ice);line-height:1.5}
+.st{position:absolute;width:300px;height:210px;padding:24px 20px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,#0b37ad,#031c69)}
+.st b{font-weight:400;font-size:64px;color:var(--yellow);text-shadow:5px 5px 0 var(--ink),8px 8px 0 #000}.st i{font-style:normal;font-size:16px;color:var(--ice)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:50}
+.scan{position:absolute;inset:0;z-index:60;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 2px,transparent 2px 6px)}
+.vign{position:absolute;inset:0;z-index:59;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%)}
+</style></head>
+<body>
+<canvas id="bg" width="1080" height="1920"></canvas>
+<div id="stage">
+  <div class="scene" id="A">
+    <canvas id="wreath" width="1080" height="900" style="top:80px"></canvas>
+    <span class="logo abs" data-logo="league" id="Abadge" style="left:380px;top:360px;width:320px"></span>
+    <div class="abs c big yl" id="A1" style="top:930px;font-size:80px">THANKSGIVING</div>
+    <div class="abs c big" id="A2" style="top:1050px;font-size:72px;color:var(--cream)">WEEK 12</div>
+    <div class="abs c sh or" id="A3" style="top:1180px;font-size:30px">STAT CARD</div>
+    <canvas id="turkeyA" width="256" height="256" style="left:412px;top:1290px;width:256px;height:256px"></canvas>
+  </div>
+  <div id="cardWrap"><div id="card">
+    <div class="face pf" id="front">
+      <div class="hd"><span class="ice">KPL · THANKSGIVING · WK 12</span><span class="chip">RB</span></div>
+      <div id="art" class="stripes"><canvas id="artfx" width="820" height="560"></canvas><div id="ghost">W12</div><canvas id="spr" width="820" height="540"></canvas></div>
+      <div class="abs c big" style="top:676px;font-size:52px">JAHMYR GIBBS</div>
+      <div class="abs c ice" style="top:752px;font-size:17px">RB · DETROIT LIONS · HOUSE OF HECK</div>
+      <div class="abs c" style="top:800px"><span id="tot" style="font-size:112px;color:var(--yellow);text-shadow:7px 7px 0 var(--ink),11px 11px 0 #000">0.0</span><div class="ice" style="font-size:16px;margin-top:14px">FANTASY PTS · WEEK 12</div></div>
+      <div class="abs" id="cChips" style="left:30px;right:30px;top:1000px;display:flex;justify-content:space-between"></div>
+      <div class="abs" style="left:0;right:0;top:1176px;height:74px;background:#000;display:flex;align-items:center;justify-content:center;gap:16px;font-size:18px"><span class="logo" data-logo="h" style="width:66px"></span><span>HOUSE OF HECK · 8-3</span></div>
+      <div id="holo"></div><canvas id="spark" width="860" height="1250"></canvas>
+    </div>
+    <div class="face pfy stripes" id="back"><span class="logo" data-logo="league" style="width:300px"></span></div>
+  </div></div>
+  <div class="scene" id="C">
+    <div class="abs sh or" style="left:70px;top:300px;font-size:20px">CHI @ DET · THANKSGIVING</div>
+    <div class="abs big yl" style="left:70px;top:345px;font-size:52px">THE BOX SCORE</div>
+    <div id="Cgrid"></div>
+    <div class="abs sh" id="Ch2" style="left:70px;top:1050px;font-size:22px">HOW HE SCORED 55.2</div>
+    <canvas id="stack" width="1080" height="1920"></canvas>
+    <div id="Clegend"></div>
+  </div>
+  <div class="scene" id="D">
+    <div class="abs sh or" style="left:70px;top:300px;font-size:20px">KPL WEEK 12 · COIN-FLIP MATCHUP</div>
+    <div class="abs big yl" style="left:70px;top:345px;font-size:52px" id="Dtitle"></div>
+    <div class="abs pf" id="m1" style="left:70px;top:470px;width:420px;height:470px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,#0b37ad,#031c69)"><span class="logo" data-logo="h" style="width:220px"></span><div class="sh" style="font-size:28px;margin-top:24px">HOUSE OF HECK</div><div id="m1s" style="font-size:72px;color:var(--yellow);margin-top:26px;text-shadow:5px 5px 0 var(--ink),8px 8px 0 #000">0.0</div></div>
+    <div class="abs big yl" id="mvs" style="left:490px;top:660px;width:100px;text-align:center;font-size:44px">VS</div>
+    <div class="abs pf" id="m2" style="left:590px;top:470px;width:420px;height:470px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,#0b37ad,#031c69)"><span class="logo" data-logo="k" style="width:220px"></span><div class="sh" style="font-size:28px;margin-top:24px">KEELDAWGS</div><div id="m2s" style="font-size:72px;margin-top:26px;text-shadow:5px 5px 0 #000">0.0</div></div>
+    <div class="abs pf" id="duel" style="left:70px;top:1010px;width:940px;padding:30px;background:linear-gradient(180deg,#0b37ad,#031c69)">
+      <div class="sh or" style="font-size:18px">ALL FROM CHI @ DET</div>
+      <div id="duelRows" style="margin-top:24px"></div>
+      <div class="ice" id="Dasof" style="font-size:14px;margin-top:22px;line-height:1.7"></div>
+    </div>
+  </div>
+  <div class="scene" id="E">
+    <canvas id="turkeyE" width="300" height="300" style="left:390px;top:1060px;width:300px;height:300px"></canvas>
+    <div class="abs c big" id="E1" style="top:1380px;font-size:56px;color:var(--orange)">GOBBLE GOBBLE</div>
+    <div class="abs c" id="E2" style="top:1480px"><div class="sh yl" style="font-size:24px">FOLLOW LIVE ON KPL HQ</div><div class="ice" style="font-size:16px;margin-top:18px">KPLHQ.KPLREDZONE.WORKERS.DEV</div></div>
+  </div>
+</div>
+<div id="bug"><span class="logo" data-logo="league"></span><div><b>KPL HQ</b><i>THANKSGIVING · WK 12</i></div></div>
+<canvas id="fx" width="1080" height="1920" style="z-index:45"></canvas>
+<div id="flash"></div><div class="vign"></div><div class="scan"></div>
+<script>
+let D,SPR;const $=s=>document.getElementById(s);
+const cl=x=>Math.max(0,Math.min(1,x)),P=(t,a,b)=>cl((t-a)/(b-a));
+const oc=x=>1-Math.pow(1-x,3),io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,sine=x=>-(Math.cos(Math.PI*x)-1)/2,oq=x=>1-Math.pow(1-x,5);
+const spr=x=>x<=0?0:x>=1?1:1-Math.exp(-6.5*x)*Math.cos(8.5*x);
+const set=(id,css)=>Object.assign((typeof id==='string'?$(id):id).style,css);
+const snap=(v,g=6)=>Math.round(v/g)*g,blink=(t,p=.5)=>Math.floor(t/p)%2===0;
+function fin(el,u,a,d=.7,dy=60,dx=0){const x=P(u,a,a+d),e=spr(x),E=typeof el==='string'?$(el):el;E.style.opacity=Math.min(1,x*2.4);E.style.transform=`translate(${(1-e)*dx}px,${(1-e)*dy}px)`}
+const TL=[['A',0,2.8],['B',2.8,9.0],['C',9.0,15.0],['D',15.0,20.6],['E',20.6,24.6]];const END=24.6;
+// ---------- KPL Thanksgiving background: starfield, falling pixel leaves, turf ----------
+const R=(()=>{let s=1137;return()=>(s=(s*16807)%2147483647)/2147483647})();
+const stars=[...Array(140)].map(()=>({x:R()*1080,y:R()*1920,z:1+Math.floor(R()*3),c:R()}));
+const leaves=[...Array(30)].map(()=>({x:R()*1080,y:R()*1920,s:.5+R(),c:Math.floor(R()*3),w:R()*6}));
+const LEAF=['....X....','.X..X..X.','.XX.X.XX.','..XXXXX..','XXXXXXXXX','.XXXXXXX.','..XXXXX..','....S....','....S....'];
+function drawLeaf(c,cx,cy,S,col,flip){const at=(x,y)=>LEAF[y]&&LEAF[y][x]&&LEAF[y][x]!=='.';for(let y=-1;y<=9;y++)for(let x=-1;x<=9;x++){const X=flip?8-x:x;let f=null;if(at(X,y))f=LEAF[y][X]==='S'?'#6b3612':col;else if(at(X+1,y)||at(X-1,y)||at(X,y+1)||at(X,y-1))f='#0c0a14';if(f){c.fillStyle=f;c.fillRect(cx+(x-4)*S,cy+(y-4)*S,S,S)}}}
+function bg(t){const c=$('bg').getContext('2d');c.fillStyle='#020f3d';c.fillRect(0,0,1080,1920);c.fillStyle='rgba(91,145,255,.07)';for(let x=0;x<1080;x+=48)c.fillRect(x,0,2,1920);for(let y=(t*60)%48;y<1920;y+=48)c.fillRect(0,y,1080,2);
+  for(const s of stars){const y=(s.y+t*s.z*60)%1920;c.fillStyle=s.c<.12?'#ffe32b':s.c<.22?'#ff8a1f':'rgba(207,224,255,'+(.25+s.z*.2)+')';c.fillRect(snap(s.x,4),snap(y,4),s.z*4,s.z*4)}
+  for(const l of leaves){const y=(l.y+t*100*l.s)%1920,x=l.x+Math.sin(t*1.5+l.w)*40;drawLeaf(c,snap(x,4),snap(y,4),l.s>1?4:3,['#ff8a1f','#b8481a','#ffe32b'][l.c],l.c%2)}
+  c.fillStyle='#0b3e28';c.fillRect(0,1760,1080,160);c.fillStyle='#35f377';for(let x=-(t*120%96);x<1080;x+=96)c.fillRect(x,1760,48,8);c.fillStyle='rgba(248,251,255,.5)';for(let x=-(t*120%120);x<1080;x+=120)c.fillRect(x,1820,8,100)}
+function wreath(cv,u){const c=cv.getContext('2d');c.clearRect(0,0,1080,900);const N=22,cols=['#ff8a1f','#c4002b','#ffe32b','#b8481a'];
+  for(let i=0;i<N;i++){const a=-Math.PI/2+i/N*2*Math.PI,p=oq(P(u,.3+i*.012,.8+i*.012)),r=(i%2?250:300)*p,sw=Math.sin(u*3+i)*6*p;if(p<=0)continue;drawLeaf(c,snap(540+Math.cos(a)*r+sw,6),snap(450+Math.sin(a)*r,6),i%2?8:9,cols[i%4],i%2)}}
+function turkey(cv,t){const c=cv.getContext('2d'),S=cv.width/32;c.clearRect(0,0,cv.width,cv.height);const G=[];const flap=Math.floor(t/.18)%2;
+  for(let y=0;y<32;y++){G[y]=[];for(let x=0;x<32;x++){let col=null;const dx=x-15.5,dy=y-19.5,r=Math.hypot(dx,dy),a=Math.atan2(dy,dx);
+    if(y<=20&&r>=7&&r<15.5-(flap&&(Math.floor((a+Math.PI)/(Math.PI/7))%2)?1:0)){const band=Math.floor((a+Math.PI)/(Math.PI/7));col=['#c4002b','#ff8a1f','#ffe32b','#b8481a','#ff8a1f','#c4002b','#ffe32b','#b8481a'][band%8];if(r>14)col='#6b3612'}
+    if(((dx/7)**2+((y-21)/8)**2)<=1)col=(x>13&&x<18&&y>20)?'#b8724a':'#7a4016';if(Math.hypot(x-15.5,y-11.5)<=3.4)col='#9c5a2e';
+    if((x===14||x===15)&&y===10)col='#f8fbff';if(x===15&&y===11)col='#000000';if((x===16||x===17||x===18)&&y===12)col='#ffe32b';if(x===16&&(y>=13&&y<=15))col='#ff1644';if(x===15&&y===14)col='#ff1644';
+    if((x===13||x===18)&&y>=28&&y<=30)col='#ff8a1f';if(y===30&&(x===12||x===14||x===17||x===19))col='#ff8a1f';G[y][x]=col}}
+  for(let y=0;y<32;y++)for(let x=0;x<32;x++){let col=G[y][x];if(!col){if([[1,0],[-1,0],[0,1],[0,-1]].some(([a,b])=>G[y+b]&&G[y+b][x+a]))col='#0c0a14'}if(col){c.fillStyle=col;c.fillRect(x*S,y*S,S,S)}}}
+function drawSpr(cv,scale){const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.clearRect(0,0,cv.width,cv.height);const w=SPR.width*scale,h=SPR.height*scale;c.drawImage(SPR,Math.round((cv.width-w)/2),cv.height-h,w,h)}
+// card art: harvest sun + drifting leaves inside the window
+function artfx(u){const c=$('artfx').getContext('2d');c.clearRect(0,0,820,560);const cx=410,cy=250,R0=200,S=10;
+  for(let y=-R0;y<=R0;y+=S)for(let x=-R0;x<=R0;x+=S){const d=Math.hypot(x,y);if(d>R0)continue;c.fillStyle=d>R0*.85?'#ff8a1f':'#ffd23a';c.fillRect(cx+x,cy+y,S,S)}
+  for(let i=0;i<12;i++){const y=((i*83+u*60)%640)-40,x=(i*137)%800+Math.sin(u+i)*20;drawLeaf(c,snap(x,4),snap(y,4),4,['#b8481a','#6b3612','#ff8a1f'][i%3],i%2)}}
+function sparkles(u){const c=$('spark').getContext('2d');c.clearRect(0,0,860,1250);for(let i=0;i<26;i++){const x=(i*233)%840+10,y=(i*419)%1220+10,a=Math.max(0,Math.sin(u*3+i*1.7));if(a<.6)continue;c.globalAlpha=(a-.6)*2.5;c.fillStyle=i%3?'#fff1d6':'#ffe32b';c.fillRect(x,y-8,4,20);c.fillRect(x-8,y,20,4)}c.globalAlpha=1}
+function buildCard(){$('cChips').innerHTML=[['+'+D.diff.toFixed(1),'OVER HIS<br>PROJECTION'],[D.mult.toFixed(1)+'X','PROJECTED<br>'+D.proj.toFixed(1)],['HIGH','SEASON-BEST<br>KPL GAME']].map((x,i)=>`<div class="c3" id="cc${i}"><b>${x[0]}</b><i>${x[1]}</i></div>`).join('');drawSpr($('spr'),9)}
+function cardPose(t){let s=1,x=0,y=0,op=1,ry=0;const tB=TL[1][1];
+  if(t<1.9)op=0;else if(t<tB){const p=oq(P(t,1.9,2.6));s=.3+.7*p;ry=180+(1-p)*540;y=(1-p)*500;ry=180-180*sine(P(t,2.6,tB+.1))}
+  else if(t<TL[2][1]-.4){}else if(t<TL[2][1]+.1){const p=io(P(t,TL[2][1]-.4,TL[2][1]+.1));x=-1300*p;ry=-25*p}
+  else if(t<TL[4][1]){op=0}else{const p=spr(P(t,TL[4][1],TL[4][1]+.9));s=.52;y=-360;x=(1-p)*1300;ry=(1-p)*30}
+  ry+=Math.sin(t*1.2)*5;$('cardWrap').style.opacity=op;$('cardWrap').style.transform=`translate(${x}px,${y+Math.sin(t*1.5)*8}px) scale(${s})`;$('card').style.transform=`rotateY(${ry}deg) rotateX(${Math.cos(t*.9)*3}deg)`}
+function renderCard(u){artfx(u);$('tot').textContent=(D.pts*sine(P(u,.6,2.3))).toFixed(1);$('tot').style.textShadow=`7px 7px 0 #c4002b,11px 11px 0 #000,0 0 ${u>2.3?18+10*Math.sin(u*4):0}px #ffe32b`;
+  [0,1,2].forEach(i=>{const el=$('cc'+i),p=spr(P(u,1.5+i*.15,2.3+i*.15));el.style.transform=`scale(${p})`;el.style.opacity=P(u,1.5+i*.15,1.65+i*.15)});
+  set('holo',{transform:`translateX(${-200+1900*io(P((u%3.1),.3,1.6))}px) rotate(20deg)`});sparkles(u);set('ghost',{transform:`translateX(${(1-spr(P(u,.3,1.1)))*300}px)`})}
+// ---------- box score + scoring breakdown ----------
+const PC=['#ffe32b','#ff8a1f','#c4002b','#5b91ff','#cfe0ff'];
+function buildC(){const it=[[D.car,'CARRIES'],[D.ryd,'RUSH YDS'],[D.rtd,'RUSH TD'],[D.ypc,'YDS/CARRY',1],[D.rec,'CATCHES'],[D.cyd,'REC YDS']];
+  $('Cgrid').innerHTML=it.map((x,i)=>`<div class="st pf" id="sg${i}" style="left:${70+(i%3)*320}px;top:${470+Math.floor(i/3)*250}px"><b data-v="${x[0]}" data-d="${x[2]||0}">0</b><i>${x[1]}</i></div>`).join('');
+  $('Clegend').innerHTML=D.parts.map((p,i)=>`<div class="abs sh" id="lg${i}" style="left:70px;top:${1250+i*64}px;width:940px;display:flex;align-items:center;gap:18px;font-size:20px"><span style="width:34px;height:34px;background:${PC[i]};box-shadow:0 0 0 3px #000"></span><span style="flex:1">${p[0]}</span><span class="yl">+${p[1].toFixed(1)}</span></div>`).join('')}
+function renderC(u){document.querySelectorAll('#Cgrid .st').forEach((el,i)=>{const a=.3+i*.14;fin(el,u,a,.8,0,i%3===0?-300:i%3===2?300:0);const b=el.querySelector('b'),v=+b.dataset.v,e=sine(P(u,a+.1,a+1));
+    b.textContent=+b.dataset.d?(v*e).toFixed(1):Math.round(v*e);b.style.textShadow=`5px 5px 0 #c4002b,8px 8px 0 #000,0 0 ${u>a+1&&v===D.ryd?18+10*Math.sin(u*4):0}px #ffe32b`});
+  fin('Ch2',u,1.6,.6,30);const c=$('stack').getContext('2d');c.clearRect(0,0,1080,1920);const x0=70,W=940,y=1130,H=80;let acc=0;
+  D.parts.forEach((p,i)=>{const a=2.0+i*.35,f=sine(P(u,a,a+.5)),w=W*p[1]/D.pts;if(f>0){c.shadowColor=PC[i];c.shadowBlur=14;c.fillStyle=PC[i];c.fillRect(x0+W*acc/D.pts,y,w*f,H);c.shadowBlur=0;c.fillStyle='rgba(0,0,0,.25)';c.fillRect(x0+W*acc/D.pts+w*f-6,y,6,H)}acc+=p[1];
+    const lg=$('lg'+i);fin(lg,u,a,.6,0,-120)});c.strokeStyle='#000';c.lineWidth=6;c.strokeRect(x0,y,W,H)}
+// ---------- matchup duel ----------
+function renderD(u){const lead=D.matchup.hoh-D.matchup.keel;$('Dtitle').textContent=(lead>=0?'HOH LEADS BY ':'DAWGS LEAD BY ')+Math.abs(lead).toFixed(1);const a=oc(P(u,.1,.6)),b=oc(P(u,.25,.75));set('m1',{transform:`translateX(${-600*(1-a)}px)`});set('m2',{transform:`translateX(${600*(1-b)}px)`});set('mvs',{transform:`scale(${spr(P(u,.6,1.1))})`});
+  $('m1s').textContent=(D.matchup.hoh*sine(P(u,.7,1.8))).toFixed(1);$('m2s').textContent=(D.matchup.keel*sine(P(u,.8,1.8))).toFixed(1);
+  $('m1').style.boxShadow=`0 0 0 6px #000,0 0 0 12px #ff8a1f,0 0 0 18px #000,0 24px 0 0 #6b3612,0 24px 0 6px #000,0 0 ${u>1.9?30+16*Math.sin(u*4):0}px #ffe32b`;
+  const rows=[['JAHMYR GIBBS','DET','HOUSE OF HECK',D.pts,'#ffe32b'],...D.matchup.keelScorers.map(k=>[k[0],k[1],'KEELDAWGS',k[2],'#5b91ff'])];const mx=D.pts;
+  if(!$('dr0'))$('duelRows').innerHTML=rows.map((r,i)=>`<div id="dr${i}" style="display:grid;grid-template-columns:330px 1fr 120px;gap:16px;align-items:center;margin-top:${i?20:0}px;font-size:16px"><span>${r[0]}<br><span class="ice" style="font-size:13px">${r[1]} · ${r[2]}</span></span><div style="height:34px;background:#000;padding:4px;box-shadow:0 0 0 3px #000"><div id="db${i}" style="height:100%;width:0;background:${r[4]};box-shadow:0 0 14px ${r[4]}"></div></div><span id="dv${i}" style="text-align:right;font-size:26px;color:${r[4]};text-shadow:3px 3px 0 #000">0.0</span></div>`).join('');
+  fin('duel',u,1.4,.7,60);rows.forEach((r,i)=>{const f=sine(P(u,1.8+i*.25,2.7+i*.25));$('db'+i).style.width=(100*r[3]/mx*f)+'%';$('dv'+i).textContent=(r[3]*f).toFixed(1)});
+  const t=new Date(D.asof).toLocaleString('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/New_York'});$('Dasof').innerHTML=`FINAL: CHI ${D.game.as_} · DET ${D.game.hs}<br>MATCHUP STILL LIVE · SCORES AS OF ${t} ET THANKSGIVING`}
+function renderA(u){wreath($('wreath'),u);const b=P(u,0,.4);set('Abadge',{transform:`scale(${b<1?2.6-1.6*oq(b):1})`,opacity:P(u,0,.12)});
+  const sl=(id,a)=>{const x=P(u,a,a+.22);set(id,{transform:`scale(${x<1?2.4-1.4*oq(x):1})`,opacity:x>0?1:0})};sl('A1',.7);sl('A2',.95);fin('A3',u,1.2,.5,30);
+  const tu=$('turkeyA');turkey(tu,u);tu.style.opacity=u>1.3?1:0;tu.style.transform=`translateY(${(1-oq(P(u,1.3,1.6)))*200}px)`;
+  const out=P(u,1.8,2.2);['Abadge','A1','A2','A3','wreath','turkeyA'].forEach(id=>{$(id).style.opacity=Math.min(+$(id).style.opacity||1,1-out)})}
+function renderE(u){const tu=$('turkeyE');turkey(tu,u);tu.style.transform=`translateY(${(1-oq(P(u,.5,.9)))*300}px)`;const x=P(u,.8,1.0);set('E1',{transform:`scale(${x<1?2.4-1.4*oq(x):1})`,opacity:x>0?1:0});fin('E2',u,1.2,.6,30)}
+function fx(t){const c=$('fx').getContext('2d');c.clearRect(0,0,1080,1920);for(const s of TL.slice(2)){const d=t-s[1];if(d>-.2&&d<.2){const p=(d+.2)/.4;
+  ['#ffe32b','#ff8a1f','#1d63e0','#000'].forEach((col,i)=>{c.fillStyle=col;c.save();c.translate(540,960);c.rotate(-.5);c.fillRect(snap(-2400+4800*io(cl(p*1.1-i*.05)),12)-160-i*170,-1600,150,3200);c.restore()})}}
+  $('flash').style.opacity=Math.max(0,1-Math.abs(t-.4)/.08)*.6}
+function render(t){bg(t);fx(t);const sc=TL.find(s=>t>=s[1]&&t<s[2])||TL[TL.length-1],id=sc[0],u=t-sc[1];
+  for(const s of document.querySelectorAll('.scene'))s.style.display=s.id===id?'block':'none';$('bug').style.display=t>2.5?'flex':'none';
+  cardPose(t);renderCard(Math.max(0,t-TL[1][1]));if(id==='A')renderA(u);if(id==='C')renderC(u);if(id==='D')renderD(u);if(id==='E')renderE(u);
+  document.body.style.filter=t>END-.5?`brightness(${1-P(t,END-.5,END)})`:'none'}
+window.setData=async d=>{D=d;SPR=new Image();SPR.src='../../assets/players/4429795_hero.png';await SPR.decode();buildCard();buildC()};window.render=render;
+</script></body></html>

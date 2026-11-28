@@ -1,0 +1,302 @@
+{
+ "season": {
+  "player": "Jahmyr Gibbs",
+  "pos": "RB",
+  "weeks": [
+   {
+    "wk": 1,
+    "team": 6,
+    "slot": 2,
+    "pts": 36.6,
+    "car": 29.0,
+    "ryd": 156.0,
+    "rtd": 2.0,
+    "rec": 5.0,
+    "tgt": 5.0,
+    "cyd": 30.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 2,
+    "team": 6,
+    "slot": 2,
+    "pts": 23.3,
+    "car": 16.0,
+    "ryd": 52.0,
+    "rtd": 0,
+    "rec": 6.0,
+    "tgt": 8.0,
+    "cyd": 61.0,
+    "ctd": 1.0,
+    "played": true
+   },
+   {
+    "wk": 3,
+    "team": 6,
+    "slot": 2,
+    "pts": 41.4,
+    "car": 20.0,
+    "ryd": 99.0,
+    "rtd": 2.0,
+    "rec": 7.0,
+    "tgt": 8.0,
+    "cyd": 65.0,
+    "ctd": 1.0,
+    "played": true
+   },
+   {
+    "wk": 4,
+    "team": 6,
+    "slot": 2,
+    "pts": 17.7,
+    "car": 15.0,
+    "ryd": 46.0,
+    "rtd": 1.0,
+    "rec": 4.0,
+    "tgt": 7.0,
+    "cyd": 31.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 5,
+    "team": 6,
+    "slot": 2,
+    "pts": 40.7,
+    "car": 25.0,
+    "ryd": 151.0,
+    "rtd": 2.0,
+    "rec": 5.0,
+    "tgt": 6.0,
+    "cyd": 56.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 6,
+    "team": 6,
+    "slot": 20,
+    "pts": 0.0,
+    "car": 0,
+    "ryd": 0,
+    "rtd": 0,
+    "rec": 0,
+    "tgt": 0,
+    "cyd": 0,
+    "ctd": 0,
+    "played": false
+   },
+   {
+    "wk": 7,
+    "team": 6,
+    "slot": 2,
+    "pts": 20.3,
+    "car": 29.0,
+    "ryd": 116.0,
+    "rtd": 0,
+    "rec": 5.0,
+    "tgt": 6.0,
+    "cyd": 27.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 8,
+    "team": 6,
+    "slot": 2,
+    "pts": 27.8,
+    "car": 23.0,
+    "ryd": 153.0,
+    "rtd": 1.0,
+    "rec": 2.0,
+    "tgt": 4.0,
+    "cyd": 15.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 9,
+    "team": 6,
+    "slot": 2,
+    "pts": 13.4,
+    "car": 20.0,
+    "ryd": 74.0,
+    "rtd": 1.0,
+    "rec": 0,
+    "tgt": 1.0,
+    "cyd": 0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 10,
+    "team": 6,
+    "slot": 2,
+    "pts": 47.2,
+    "car": 22.0,
+    "ryd": 153.0,
+    "rtd": 2.0,
+    "rec": 7.0,
+    "tgt": 8.0,
+    "cyd": 99.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 11,
+    "team": 6,
+    "slot": 2,
+    "pts": 27.8,
+    "car": 23.0,
+    "ryd": 98.0,
+    "rtd": 2.0,
+    "rec": 4.0,
+    "tgt": 5.0,
+    "cyd": 20.0,
+    "ctd": 0,
+    "played": true
+   },
+   {
+    "wk": 12,
+    "team": 6,
+    "slot": 2,
+    "pts": 55.2,
+    "car": 21.0,
+    "ryd": 205.0,
+    "rtd": 3.0,
+    "rec": 5.0,
+    "tgt": 5.0,
+    "cyd": 47.0,
+    "ctd": 0,
+    "played": true
+   }
+  ],
+  "games": 11,
+  "fpts": 351.4,
+  "startedPts": 351.4,
+  "avg": 31.9,
+  "best": {
+   "wk": 12,
+   "team": 6,
+   "slot": 2,
+   "pts": 55.2,
+   "car": 21.0,
+   "ryd": 205.0,
+   "rtd": 3.0,
+   "rec": 5.0,
+   "tgt": 5.0,
+   "cyd": 47.0,
+   "ctd": 0,
+   "played": true
+  },
+  "over20": 9,
+  "over40": 4,
+  "car": 243.0,
+  "ryd": 1303.0,
+  "rtd": 16.0,
+  "rec": 50.0,
+  "tgt": 63.0,
+  "cyd": 451.0,
+  "ctd": 2.0,
+  "leagueRank": 1,
+  "posRank": 1,
+  "teamShare": 23.0,
+  "teamTotal": 1530.5,
+  "next": [
+   [
+    "Jahmyr Gibbs",
+    351.4
+   ],
+   [
+    "Jaxon Smith-Njigba",
+    287.2
+   ],
+   [
+    "CeeDee Lamb",
+    267.2
+   ],
+   [
+    "Josh Allen",
+    249.7
+   ],
+   [
+    "Christian McCaffrey",
+    230.2
+   ]
+  ],
+  "share11": 20.1,
+  "hohPF11": 1475.32,
+  "gibbs11": 296.2,
+  "hohRec": "8-3",
+  "scrim": 1754,
+  "ttd": 18,
+  "ypc": 5.4
+ },
+ "wk12": {
+  "name": "JAHMYR GIBBS",
+  "pos": "RB",
+  "nfl": "DET",
+  "week": 12,
+  "pts": 55.2,
+  "proj": 27.2,
+  "diff": 28.0,
+  "mult": 2.0,
+  "seasonHigh": true,
+  "car": 21,
+  "ryd": 205,
+  "rtd": 3,
+  "rec": 5,
+  "tgt": 5,
+  "cyd": 47,
+  "ctd": 0,
+  "ypc": 9.8,
+  "parts": [
+   [
+    "RUSH YDS",
+    20.5
+   ],
+   [
+    "RUSH TD",
+    18
+   ],
+   [
+    "200-YD BONUS",
+    7
+   ],
+   [
+    "RECEPTIONS",
+    5
+   ],
+   [
+    "REC YDS",
+    4.7
+   ]
+  ],
+  "game": {
+   "away": "CHI",
+   "home": "DET",
+   "as_": 39,
+   "hs": 35
+  },
+  "matchup": {
+   "hoh": 55.2,
+   "keel": 53.8,
+   "keelScorers": [
+    [
+     "D'ANDRE SWIFT",
+     "CHI",
+     29.2
+    ],
+    [
+     "AMON-RA ST. BROWN",
+     "DET",
+     24.6
+    ]
+   ],
+   "hohRec": "8-3",
+   "keelRec": "6-5"
+  },
+  "asof": "2026-11-26T21:39Z"
+ }
+}

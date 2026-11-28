@@ -1,0 +1,1027 @@
+{
+ "week": 12,
+ "asof": "2026-11-26T07:04:26.957Z",
+ "games": [
+  {
+   "id": "401873081",
+   "away": "CHI",
+   "home": "DET",
+   "awayName": "BEARS",
+   "homeName": "LIONS",
+   "awayColor": "#0b1c3a",
+   "awayAlt": "#e64100",
+   "homeColor": "#0076b6",
+   "homeAlt": "#bbbbbb",
+   "awayRec": "8-2",
+   "homeRec": "8-2",
+   "kick": "1:00 PM EST",
+   "venue": "FORD FIELD",
+   "tv": "CBS",
+   "players": [
+    {
+     "id": "4429795",
+     "name": "JAHMYR GIBBS",
+     "pos": "RB",
+     "nfl": "DET",
+     "kpl": "HOUSE OF HECK",
+     "logo": "h",
+     "proj": 27.2,
+     "stat": "1,098 RUSH YDS \u00b7 13 TD",
+     "game": "CHI @ DET"
+    },
+    {
+     "id": "3046779",
+     "name": "JARED GOFF",
+     "pos": "QB",
+     "nfl": "DET",
+     "kpl": "THE E-TEAM",
+     "logo": "e",
+     "proj": 18.7,
+     "stat": "2,716 YDS \u00b7 20 TD \u00b7 4 INT"
+    },
+    {
+     "id": "4374302",
+     "name": "AMON-RA ST. BROWN",
+     "pos": "WR",
+     "nfl": "DET",
+     "kpl": "KEELDAWGS",
+     "logo": "k",
+     "proj": 18.7,
+     "stat": "70 REC \u00b7 792 YDS \u00b7 8 TD"
+    },
+    {
+     "id": "4431611",
+     "name": "CALEB WILLIAMS",
+     "pos": "QB",
+     "nfl": "CHI",
+     "kpl": "CK COALITION",
+     "logo": "c",
+     "proj": 17.5,
+     "stat": "1,727 YDS \u00b7 10 TD \u00b7 6 INT"
+    },
+    {
+     "id": "4259545",
+     "name": "D'ANDRE SWIFT",
+     "pos": "RB",
+     "nfl": "CHI",
+     "kpl": "KEELDAWGS",
+     "logo": "k",
+     "proj": 14.3,
+     "stat": "627 RUSH YDS \u00b7 10 TD"
+    },
+    {
+     "id": "4426388",
+     "name": "JAMESON WILLIAMS",
+     "pos": "WR",
+     "nfl": "DET",
+     "kpl": "CK COALITION",
+     "logo": "c",
+     "proj": 12.7,
+     "stat": "36 REC \u00b7 611 YDS \u00b7 6 TD"
+    },
+    {
+     "id": "4430027",
+     "name": "SAM LAPORTA",
+     "pos": "TE",
+     "nfl": "DET",
+     "kpl": "TEAM BLISS",
+     "logo": "t",
+     "proj": 11.0,
+     "stat": "39 REC \u00b7 477 YDS \u00b7 3 TD"
+    },
+    {
+     "id": "4723086",
+     "name": "COLSTON LOVELAND",
+     "pos": "TE",
+     "nfl": "CHI",
+     "kpl": "CK COALITION",
+     "logo": "c",
+     "proj": 10.7,
+     "stat": "40 REC \u00b7 392 YDS \u00b7 3 TD"
+    },
+    {
+     "id": "-16003",
+     "name": "BEARS D/ST",
+     "pos": "D/ST",
+     "nfl": "CHI",
+     "kpl": "THE T SERIES",
+     "logo": "s",
+     "proj": 4.1,
+     "stat": ""
+    }
+   ]
+  },
+  {
+   "id": "401873080",
+   "away": "PHI",
+   "home": "DAL",
+   "awayName": "EAGLES",
+   "homeName": "COWBOYS",
+   "awayColor": "#06424d",
+   "awayAlt": "#000000",
+   "homeColor": "#002a5c",
+   "homeAlt": "#b0b7bc",
+   "awayRec": "3-7",
+   "homeRec": "5-6",
+   "kick": "4:30 PM EST",
+   "venue": "AT&T STADIUM",
+   "tv": "FOX",
+   "players": [
+    {
+     "id": "4241389",
+     "name": "CEEDEE LAMB",
+     "pos": "WR",
+     "nfl": "DAL",
+     "kpl": "BIG BALLS BLUM",
+     "logo": "b",
+     "proj": 21.5,
+     "stat": "88 REC \u00b7 1,108 YDS \u00b7 9 TD",
+     "game": "PHI @ DAL"
+    },
+    {
+     "id": "2577417",
+     "name": "DAK PRESCOTT",
+     "pos": "QB",
+     "nfl": "DAL",
+     "kpl": "HOUSE OF HECK",
+     "logo": "h",
+     "proj": 21.2,
+     "stat": "3,049 YDS \u00b7 25 TD \u00b7 6 INT",
+     "game": "PHI @ DAL"
+    },
+    {
+     "id": "4361579",
+     "name": "JAVONTE WILLIAMS",
+     "pos": "RB",
+     "nfl": "DAL",
+     "kpl": "BAYSHORE BARSLUGS",
+     "logo": "v",
+     "proj": 17.9,
+     "stat": "759 RUSH YDS \u00b7 10 TD"
+    },
+    {
+     "id": "4426354",
+     "name": "GEORGE PICKENS",
+     "pos": "WR",
+     "nfl": "DAL",
+     "kpl": "KEELDAWGS",
+     "logo": "k",
+     "proj": 15.6,
+     "stat": "57 REC \u00b7 780 YDS \u00b7 6 TD"
+    },
+    {
+     "id": "4241478",
+     "name": "DEVONTA SMITH",
+     "pos": "WR",
+     "nfl": "PHI",
+     "kpl": "THE T SERIES",
+     "logo": "s",
+     "proj": 15.1,
+     "stat": "31 REC \u00b7 351 YDS \u00b7 2 TD"
+    },
+    {
+     "id": "3929630",
+     "name": "SAQUON BARKLEY",
+     "pos": "RB",
+     "nfl": "PHI",
+     "kpl": "BAYSHORE BARSLUGS",
+     "logo": "v",
+     "proj": 15.0,
+     "stat": "371 RUSH YDS \u00b7 4 TD"
+    },
+    {
+     "id": "3953687",
+     "name": "BRANDON AUBREY",
+     "pos": "K",
+     "nfl": "DAL",
+     "kpl": "TEAM BLISS",
+     "logo": "t",
+     "proj": 12.4,
+     "stat": "20-25 FG \u00b7 LONG 60"
+    },
+    {
+     "id": "3121023",
+     "name": "DALLAS GOEDERT",
+     "pos": "TE",
+     "nfl": "PHI",
+     "kpl": "HOUSE OF HECK",
+     "logo": "h",
+     "proj": 8.4,
+     "stat": "32 REC \u00b7 346 YDS \u00b7 2 TD"
+    },
+    {
+     "id": "5083754",
+     "name": "RYAN FLOURNOY",
+     "pos": "WR",
+     "nfl": "DAL",
+     "kpl": "THE T SERIES",
+     "logo": "s",
+     "proj": 8.1,
+     "stat": "39 REC \u00b7 477 YDS \u00b7 3 TD"
+    },
+    {
+     "id": "-16006",
+     "name": "COWBOYS D/ST",
+     "pos": "D/ST",
+     "nfl": "DAL",
+     "kpl": "CORGI'S UNDERDOG KENNEL",
+     "logo": "u",
+     "proj": 7.8,
+     "stat": ""
+    }
+   ]
+  },
+  {
+   "id": "401873082",
+   "away": "KC",
+   "home": "BUF",
+   "awayName": "CHIEFS",
+   "homeName": "BILLS",
+   "awayColor": "#e31837",
+   "awayAlt": "#ffb612",
+   "homeColor": "#00338d",
+   "homeAlt": "#d50a0a",
+   "awayRec": "8-2",
+   "homeRec": "9-1",
+   "kick": "8:20 PM EST",
+   "venue": "HIGHMARK STADIUM",
+   "tv": "NBC",
+   "players": [
+    {
+     "id": "3139477",
+     "name": "PATRICK MAHOMES",
+     "pos": "QB",
+     "nfl": "KC",
+     "kpl": "TEAM BLISS",
+     "logo": "t",
+     "proj": 19.2,
+     "stat": "2,709 YDS \u00b7 22 TD \u00b7 4 INT",
+     "game": "KC @ BUF"
+    },
+    {
+     "id": "3918298",
+     "name": "JOSH ALLEN",
+     "pos": "QB",
+     "nfl": "BUF",
+     "kpl": "BIG BALLS BLUM",
+     "logo": "b",
+     "proj": 19.1,
+     "stat": "2,527 YDS \u00b7 14 TD \u00b7 9 INT",
+     "game": "KC @ BUF"
+    },
+    {
+     "id": "4832955",
+     "name": "EMMETT JOHNSON",
+     "pos": "RB",
+     "nfl": "KC",
+     "kpl": "BAYSHORE BARSLUGS",
+     "logo": "v",
+     "proj": 18.3,
+     "stat": "317 RUSH YDS \u00b7 2 TD"
+    },
+    {
+     "id": "4379399",
+     "name": "JAMES COOK III",
+     "pos": "RB",
+     "nfl": "BUF",
+     "kpl": "BAJA BOYZ",
+     "logo": "w",
+     "proj": 15.1,
+     "stat": "1,060 RUSH YDS \u00b7 10 TD"
+    },
+    {
+     "id": "3915416",
+     "name": "DJ MOORE",
+     "pos": "WR",
+     "nfl": "BUF",
+     "kpl": "THE E-TEAM",
+     "logo": "e",
+     "proj": 12.9,
+     "stat": "31 REC \u00b7 466 YDS \u00b7 4 TD"
+    },
+    {
+     "id": "3917232",
+     "name": "TYLER BASS",
+     "pos": "K",
+     "nfl": "BUF",
+     "kpl": "THE T SERIES",
+     "logo": "s",
+     "proj": 12.5,
+     "stat": "24-25 FG \u00b7 LONG 56"
+    },
+    {
+     "id": "15847",
+     "name": "TRAVIS KELCE",
+     "pos": "TE",
+     "nfl": "KC",
+     "kpl": "CORGI'S UNDERDOG KENNEL",
+     "logo": "u",
+     "proj": 11.8,
+     "stat": "41 REC \u00b7 586 YDS \u00b7 4 TD"
+    },
+    {
+     "id": "4688813",
+     "name": "JOSH DOWNS",
+     "pos": "WR",
+     "nfl": "KC",
+     "kpl": "THE E-TEAM",
+     "logo": "e",
+     "proj": 8.4,
+     "stat": "41 REC \u00b7 466 YDS \u00b7 2 TD"
+    }
+   ]
+  }
+ ],
+ "top": [
+  {
+   "id": "4429795",
+   "name": "JAHMYR GIBBS",
+   "pos": "RB",
+   "nfl": "DET",
+   "kpl": "HOUSE OF HECK",
+   "logo": "h",
+   "proj": 27.2,
+   "stat": "1,098 RUSH YDS \u00b7 13 TD",
+   "game": "CHI @ DET"
+  },
+  {
+   "id": "4241389",
+   "name": "CEEDEE LAMB",
+   "pos": "WR",
+   "nfl": "DAL",
+   "kpl": "BIG BALLS BLUM",
+   "logo": "b",
+   "proj": 21.5,
+   "stat": "88 REC \u00b7 1,108 YDS \u00b7 9 TD",
+   "game": "PHI @ DAL"
+  },
+  {
+   "id": "2577417",
+   "name": "DAK PRESCOTT",
+   "pos": "QB",
+   "nfl": "DAL",
+   "kpl": "HOUSE OF HECK",
+   "logo": "h",
+   "proj": 21.2,
+   "stat": "3,049 YDS \u00b7 25 TD \u00b7 6 INT",
+   "game": "PHI @ DAL"
+  },
+  {
+   "id": "3139477",
+   "name": "PATRICK MAHOMES",
+   "pos": "QB",
+   "nfl": "KC",
+   "kpl": "TEAM BLISS",
+   "logo": "t",
+   "proj": 19.2,
+   "stat": "2,709 YDS \u00b7 22 TD \u00b7 4 INT",
+   "game": "KC @ BUF"
+  },
+  {
+   "id": "3918298",
+   "name": "JOSH ALLEN",
+   "pos": "QB",
+   "nfl": "BUF",
+   "kpl": "BIG BALLS BLUM",
+   "logo": "b",
+   "proj": 19.1,
+   "stat": "2,527 YDS \u00b7 14 TD \u00b7 9 INT",
+   "game": "KC @ BUF"
+  }
+ ],
+ "wed": [
+  {
+   "id": "4429096",
+   "name": "BLAKE CORUM",
+   "pos": "RB",
+   "nfl": "LAR",
+   "kpl": "THE E-TEAM",
+   "logo": "e",
+   "pts": 31.5,
+   "line": "32 CAR \u00b7 184 YDS \u00b7 1 TD"
+  },
+  {
+   "id": "4248528",
+   "name": "CHRISTIAN WATSON",
+   "pos": "WR",
+   "nfl": "GB",
+   "kpl": "BAJA BOYZ",
+   "logo": "w",
+   "pts": 16.5,
+   "line": "4 REC \u00b7 65 YDS \u00b7 1 TD"
+  },
+  {
+   "id": "4430737",
+   "name": "KYREN WILLIAMS",
+   "pos": "RB",
+   "nfl": "LAR",
+   "kpl": "BIG BALLS BLUM",
+   "logo": "b",
+   "pts": 16.5,
+   "line": "12 CAR \u00b7 46 YDS \u00b7 1 TD"
+  },
+  {
+   "id": "4701936",
+   "name": "MATTHEW GOLDEN",
+   "pos": "WR",
+   "nfl": "GB",
+   "kpl": "RONNIES REGIME",
+   "logo": "r",
+   "pts": 4.9,
+   "line": "1 REC \u00b7 39 YDS \u00b7 0 TD"
+  }
+ ],
+ "matchups": [
+  [
+   {
+    "name": "CORGI'S UNDERDOG KENNEL",
+    "logo": "u",
+    "score": 0,
+    "proj": 120.1,
+    "win": 46,
+    "rec": "3-8",
+    "tday": 2
+   },
+   {
+    "name": "CK COALITION",
+    "logo": "c",
+    "score": 0,
+    "proj": 127.8,
+    "win": 54,
+    "rec": "6-5",
+    "tday": 3
+   }
+  ],
+  [
+   {
+    "name": "BAJA BOYZ",
+    "logo": "w",
+    "score": 16.5,
+    "proj": 144.7,
+    "win": 64,
+    "rec": "7-4",
+    "tday": 1
+   },
+   {
+    "name": "THE E-TEAM",
+    "logo": "e",
+    "score": 31.5,
+    "proj": 119.0,
+    "win": 36,
+    "rec": "5-6",
+    "tday": 3
+   }
+  ],
+  [
+   {
+    "name": "BAYSHORE BARSLUGS",
+    "logo": "v",
+    "score": 0,
+    "proj": 143.1,
+    "win": 53,
+    "rec": "5-6",
+    "tday": 3
+   },
+   {
+    "name": "BIG BALLS BLUM",
+    "logo": "b",
+    "score": 16.5,
+    "proj": 136.3,
+    "win": 47,
+    "rec": "7-4",
+    "tday": 2
+   }
+  ],
+  [
+   {
+    "name": "TEAM BLISS",
+    "logo": "t",
+    "score": 0,
+    "proj": 120.5,
+    "win": 46,
+    "rec": "3-8",
+    "tday": 3
+   },
+   {
+    "name": "MANGES MILITIA",
+    "logo": "m",
+    "score": 0,
+    "proj": 128.9,
+    "win": 54,
+    "rec": "7-4",
+    "tday": 0
+   }
+  ],
+  [
+   {
+    "name": "RONNIES REGIME",
+    "logo": "r",
+    "score": 4.9,
+    "proj": 131.4,
+    "win": 66,
+    "rec": "5-6",
+    "tday": 0
+   },
+   {
+    "name": "THE T SERIES",
+    "logo": "s",
+    "score": 0,
+    "proj": 100.5,
+    "win": 34,
+    "rec": "4-7",
+    "tday": 4
+   }
+  ],
+  [
+   {
+    "name": "HOUSE OF HECK",
+    "logo": "h",
+    "score": 0,
+    "proj": 126.7,
+    "win": 50,
+    "rec": "8-3",
+    "tday": 3
+   },
+   {
+    "name": "KEELDAWGS",
+    "logo": "k",
+    "score": 0,
+    "proj": 126.3,
+    "win": 50,
+    "rec": "6-5",
+    "tday": 3
+   }
+  ]
+ ],
+ "standings": [
+  {
+   "rank": 1,
+   "name": "HOUSE OF HECK",
+   "logo": "h",
+   "rec": "8-3",
+   "pf": 1475.3
+  },
+  {
+   "rank": 2,
+   "name": "BAJA BOYZ",
+   "logo": "w",
+   "rec": "7-4",
+   "pf": 1447.5
+  },
+  {
+   "rank": 3,
+   "name": "BIG BALLS BLUM",
+   "logo": "b",
+   "rec": "7-4",
+   "pf": 1426.6
+  },
+  {
+   "rank": 4,
+   "name": "MANGES MILITIA",
+   "logo": "m",
+   "rec": "7-4",
+   "pf": 1331.1
+  },
+  {
+   "rank": 5,
+   "name": "KEELDAWGS",
+   "logo": "k",
+   "rec": "6-5",
+   "pf": 1521.0
+  },
+  {
+   "rank": 6,
+   "name": "CK COALITION",
+   "logo": "c",
+   "rec": "6-5",
+   "pf": 1462.7
+  },
+  {
+   "rank": 7,
+   "name": "RONNIES REGIME",
+   "logo": "r",
+   "rec": "5-6",
+   "pf": 1455.7
+  },
+  {
+   "rank": 8,
+   "name": "BAYSHORE BARSLUGS",
+   "logo": "v",
+   "rec": "5-6",
+   "pf": 1184.8
+  },
+  {
+   "rank": 9,
+   "name": "THE E-TEAM",
+   "logo": "e",
+   "rec": "5-6",
+   "pf": 1153.9
+  },
+  {
+   "rank": 10,
+   "name": "THE T SERIES",
+   "logo": "s",
+   "rec": "4-7",
+   "pf": 1298.5
+  },
+  {
+   "rank": 11,
+   "name": "TEAM BLISS",
+   "logo": "t",
+   "rec": "3-8",
+   "pf": 1245.7
+  },
+  {
+   "rank": 12,
+   "name": "CORGI'S UNDERDOG KENNEL",
+   "logo": "u",
+   "rec": "3-8",
+   "pf": 1041.0
+  }
+ ],
+ "nTday": 27,
+ "nTeamsWithTday": 10,
+ "season": {
+  "throughWeek": 11,
+  "highest": {
+   "team": "House of Heck",
+   "pts": 194.64,
+   "wk": 5,
+   "top4": [
+    [
+     "House of Heck",
+     194.64,
+     5
+    ],
+    [
+     "House of Heck",
+     188.88,
+     3
+    ],
+    [
+     "House of Heck",
+     188.66,
+     10
+    ],
+    [
+     "Big Balls Blum",
+     184.46,
+     1
+    ]
+   ]
+  },
+  "lowest": [
+   {
+    "team": "The E-Team",
+    "pts": 51.6,
+    "wk": 8
+   },
+   {
+    "team": "The E-Team",
+    "pts": 56.4,
+    "wk": 9
+   },
+   {
+    "team": "Bayshore BarSlugs",
+    "pts": 61.9,
+    "wk": 2
+   }
+  ],
+  "closest": {
+   "w": "Team Bliss",
+   "wp": 118.74,
+   "l": "KeelDawgs",
+   "lp": 118.46,
+   "margin": 0.28,
+   "wk": 7
+  },
+  "blowout": {
+   "w": "Ronnies Regime",
+   "wp": 162.48,
+   "l": "Bayshore BarSlugs",
+   "lp": 77.32,
+   "margin": 85.16,
+   "wk": 3
+  },
+  "tough": {
+   "team": "Team Bliss",
+   "pts": 158.68,
+   "w": "Big Balls Blum",
+   "wp": 173.62,
+   "wk": 2
+  },
+  "lucky": {
+   "team": "House of Heck",
+   "pts": 81.66,
+   "l": "Bayshore BarSlugs",
+   "lp": 66.18,
+   "wk": 6
+  },
+  "race": {
+   "CK Coalition": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    3,
+    4,
+    5,
+    5,
+    6
+   ],
+   "The T Series": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    3,
+    4,
+    4
+   ],
+   "KeelDawgs": [
+    0,
+    1,
+    2,
+    2,
+    2,
+    3,
+    4,
+    4,
+    5,
+    6,
+    6,
+    6
+   ],
+   "Manges Militia": [
+    0,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "Team Bliss": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "House of Heck": [
+    0,
+    1,
+    2,
+    3,
+    3,
+    4,
+    5,
+    6,
+    7,
+    7,
+    8,
+    8
+   ],
+   "Big Balls Blum": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    6,
+    7,
+    7,
+    7,
+    7
+   ],
+   "Corgi's Underdog Kennel": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    3
+   ],
+   "The E-Team": [
+    0,
+    0,
+    1,
+    1,
+    2,
+    3,
+    4,
+    5,
+    5,
+    5,
+    5,
+    5
+   ],
+   "Baja Boyz": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    3,
+    4,
+    4,
+    5,
+    5,
+    6,
+    7
+   ],
+   "Ronnies Regime": [
+    0,
+    0,
+    0,
+    1,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    4,
+    5
+   ],
+   "Bayshore BarSlugs": [
+    0,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "luck": [
+   {
+    "team": "House of Heck",
+    "w": 8,
+    "exp": 6.2,
+    "luck": 1.8
+   },
+   {
+    "team": "Manges Militia",
+    "w": 7,
+    "exp": 5.7,
+    "luck": 1.3
+   },
+   {
+    "team": "The E-Team",
+    "w": 5,
+    "exp": 4.1,
+    "luck": 0.9
+   },
+   {
+    "team": "Bayshore BarSlugs",
+    "w": 5,
+    "exp": 4.1,
+    "luck": 0.9
+   },
+   {
+    "team": "Corgi's Underdog Kennel",
+    "w": 3,
+    "exp": 2.2,
+    "luck": 0.8
+   },
+   {
+    "team": "Big Balls Blum",
+    "w": 7,
+    "exp": 6.4,
+    "luck": 0.6
+   },
+   {
+    "team": "Baja Boyz",
+    "w": 7,
+    "exp": 6.7,
+    "luck": 0.3
+   },
+   {
+    "team": "CK Coalition",
+    "w": 6,
+    "exp": 6.9,
+    "luck": -0.9
+   },
+   {
+    "team": "KeelDawgs",
+    "w": 6,
+    "exp": 7.1,
+    "luck": -1.1
+   },
+   {
+    "team": "The T Series",
+    "w": 4,
+    "exp": 5.3,
+    "luck": -1.3
+   },
+   {
+    "team": "Team Bliss",
+    "w": 3,
+    "exp": 4.4,
+    "luck": -1.4
+   },
+   {
+    "team": "Ronnies Regime",
+    "w": 5,
+    "exp": 7.0,
+    "luck": -2.0
+   }
+  ],
+  "draft": [
+   {
+    "team": "Team Bliss",
+    "draft": 1,
+    "now": 11
+   },
+   {
+    "team": "The T Series",
+    "draft": 2,
+    "now": 10
+   },
+   {
+    "team": "Big Balls Blum",
+    "draft": 3,
+    "now": 3
+   },
+   {
+    "team": "House of Heck",
+    "draft": 4,
+    "now": 1
+   },
+   {
+    "team": "Manges Militia",
+    "draft": 5,
+    "now": 4
+   },
+   {
+    "team": "The E-Team",
+    "draft": 6,
+    "now": 9
+   },
+   {
+    "team": "KeelDawgs",
+    "draft": 7,
+    "now": 5
+   },
+   {
+    "team": "Bayshore BarSlugs",
+    "draft": 8,
+    "now": 8
+   },
+   {
+    "team": "CK Coalition",
+    "draft": 9,
+    "now": 6
+   },
+   {
+    "team": "Baja Boyz",
+    "draft": 10,
+    "now": 2
+   },
+   {
+    "team": "Corgi's Underdog Kennel",
+    "draft": 11,
+    "now": 12
+   },
+   {
+    "team": "Ronnies Regime",
+    "draft": 12,
+    "now": 7
+   }
+  ]
+ }
+}

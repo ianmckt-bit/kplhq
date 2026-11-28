@@ -1,0 +1,66 @@
+{
+ "name": "JAHMYR GIBBS",
+ "pos": "RB",
+ "nfl": "DET",
+ "week": 12,
+ "pts": 55.2,
+ "proj": 27.2,
+ "diff": 28.0,
+ "mult": 2.0,
+ "seasonHigh": true,
+ "car": 21,
+ "ryd": 205,
+ "rtd": 3,
+ "rec": 5,
+ "tgt": 5,
+ "cyd": 47,
+ "ctd": 0,
+ "ypc": 9.8,
+ "parts": [
+  [
+   "RUSH YDS",
+   20.5
+  ],
+  [
+   "RUSH TD",
+   18
+  ],
+  [
+   "200-YD BONUS",
+   7
+  ],
+  [
+   "RECEPTIONS",
+   5
+  ],
+  [
+   "REC YDS",
+   4.7
+  ]
+ ],
+ "game": {
+  "away": "CHI",
+  "home": "DET",
+  "as_": 39,
+  "hs": 35
+ },
+ "matchup": {
+  "hoh": 55.2,
+  "keel": 53.8,
+  "keelScorers": [
+   [
+    "D'ANDRE SWIFT",
+    "CHI",
+    29.2
+   ],
+   [
+    "AMON-RA ST. BROWN",
+    "DET",
+    24.6
+   ]
+  ],
+  "hohRec": "8-3",
+  "keelRec": "6-5"
+ },
+ "asof": "2026-11-26T21:39Z"
+}
