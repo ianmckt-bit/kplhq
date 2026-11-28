@@ -1,0 +1,223 @@
+{
+ "theme": "feast",
+ "background": "haunted",
+ "style": "feast",
+ "bug": "THANKSGIVING FEAST",
+ "bugLogo": "h",
+ "player": {
+  "name": "JAHMYR GIBBS",
+  "pos": "RB",
+  "nfl": "DET",
+  "kplLogo": "h",
+  "sprite": "assets/players/4429795_hero.png"
+ },
+ "open": {
+  "logo": "h",
+  "lines": [
+   "A THANKSGIVING FEAST",
+   "AT THE HOUSE",
+   "OF HECK"
+  ]
+ },
+ "card": {
+  "header": "KPL \u00b7 THANKSGIVING \u00b7 WK 12",
+  "sub": "RB \u00b7 DET \u00b7 HOUSE OF HECK",
+  "ghost": "W12",
+  "total": 55.2,
+  "totalLabel": "FANTASY PTS \u00b7 THANKSGIVING",
+  "chips": [
+   [
+    "+28.0",
+    "VS HIS<br>PROJECTION"
+   ],
+   [
+    "2.0X",
+    "PROJECTED<br>27.2"
+   ],
+   [
+    "HIGH",
+    "SEASON-BEST<br>KPL GAME"
+   ]
+  ],
+  "foot": "HOUSE OF HECK \u00b7 8-3 \u00b7 1ST IN KPL",
+  "spriteScale": 9,
+  "backLogo": "h"
+ },
+ "box": {
+  "kicker": "CHI @ DET \u00b7 THANKSGIVING",
+  "title": "ON THE MENU",
+  "partsTitle": "HOW HE SCORED 55.2",
+  "stats": [
+   [
+    21.0,
+    "CARRIES"
+   ],
+   [
+    205.0,
+    "RUSH YDS"
+   ],
+   [
+    3.0,
+    "RUSH TD"
+   ],
+   [
+    9.8,
+    "YDS/CARRY",
+    1
+   ],
+   [
+    5.0,
+    "CATCHES"
+   ],
+   [
+    47.0,
+    "REC YDS"
+   ]
+  ],
+  "parts": [
+   [
+    "RUSH YDS",
+    20.5
+   ],
+   [
+    "RUSH TD",
+    18.0
+   ],
+   [
+    "200-YD RUSH BONUS",
+    7
+   ],
+   [
+    "RECEPTIONS",
+    5.0
+   ],
+   [
+    "REC YDS",
+    4.7
+   ]
+  ]
+ },
+ "partCols": [
+  "#f2a52b",
+  "#ff8a1f",
+  "#e0202a",
+  "#efe2d0",
+  "#c6b0a3",
+  "#ffd27a",
+  "#bf362b"
+ ],
+ "season": {
+  "kicker": "FANTASY POINTS BY WEEK \u00b7 2026",
+  "title": "SEASON SO FAR",
+  "weeks": [
+   {
+    "wk": 1,
+    "pts": 36.6,
+    "played": true
+   },
+   {
+    "wk": 2,
+    "pts": 23.3,
+    "played": true
+   },
+   {
+    "wk": 3,
+    "pts": 41.4,
+    "played": true
+   },
+   {
+    "wk": 4,
+    "pts": 17.7,
+    "played": true
+   },
+   {
+    "wk": 5,
+    "pts": 40.7,
+    "played": true
+   },
+   {
+    "wk": 6,
+    "pts": 0.0,
+    "played": false
+   },
+   {
+    "wk": 7,
+    "pts": 20.3,
+    "played": true
+   },
+   {
+    "wk": 8,
+    "pts": 27.8,
+    "played": true
+   },
+   {
+    "wk": 9,
+    "pts": 13.4,
+    "played": true
+   },
+   {
+    "wk": 10,
+    "pts": 47.2,
+    "played": true
+   },
+   {
+    "wk": 11,
+    "pts": 27.8,
+    "played": true
+   },
+   {
+    "wk": 12,
+    "pts": 55.2,
+    "played": true
+   }
+  ],
+  "best": 12,
+  "avg": 31.9,
+  "crownLabel": "THANKSGIVING HIGH",
+  "note": "<span class=\"t-accent\">351.4</span> PTS \u00b7 <span class=\"t-accent\">#1</span> IN KPL LINEUP PTS \u00b7 <span class=\"t-accent\">11</span> GAMES"
+ },
+ "matchup": {
+  "kicker": "KPL WEEK 12 \u00b7 COIN-FLIP MATCHUP",
+  "title": "HOH LEADS BY 17.6",
+  "a": {
+   "name": "HOUSE OF HECK",
+   "logo": "h",
+   "score": 83.14
+  },
+  "b": {
+   "name": "KEELDAWGS",
+   "logo": "k",
+   "score": 65.5
+  },
+  "rowsTitle": "TOP SCORERS",
+  "rows": [
+   [
+    "JAHMYR GIBBS",
+    "DET \u00b7 HOUSE OF HECK",
+    55.2,
+    "#f2a52b"
+   ],
+   [
+    "D'ANDRE SWIFT",
+    "CHI \u00b7 KEELDAWGS",
+    29.2,
+    "#c6b0a3"
+   ],
+   [
+    "AMON-RA ST. BROWN",
+    "DET \u00b7 KEELDAWGS",
+    24.6,
+    "#c6b0a3"
+   ]
+  ],
+  "foot": "SCORES AS OF NOV 28 14:45 UTC"
+ },
+ "outro": {
+  "title": "GOBBLE GOBBLE",
+  "line": "<span class='t-accent'>55.2</span> IN WEEK 12 \u00b7 <span class='t-accent'>351.4</span> ON THE SEASON"
+ },
+ "source": {
+  "espn_weeks": "/tmp/claude-0/-home-user-kplhq/2a91377c-47be-551b-ab51-91b35421df03/scratchpad/kitraw",
+  "built": "2026-11-28T14:45:00.009546+00:00"
+ }
+}

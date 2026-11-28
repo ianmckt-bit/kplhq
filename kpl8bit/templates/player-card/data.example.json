@@ -1,7 +1,9 @@
 {
- "theme": "feast",
- "background": "haunted",
- "bug": "THANKSGIVING FEAST",
+ "theme": "thanksgiving",
+ "background": "kpl",
+ "style": "kpl",
+ "bug": "THANKSGIVING \u00b7 WK 12",
+ "bugLogo": "league",
  "player": {
   "name": "JAHMYR GIBBS",
   "pos": "RB",
@@ -10,11 +12,11 @@
   "sprite": "assets/players/4429795_hero.png"
  },
  "open": {
-  "logo": "h",
+  "logo": "league",
   "lines": [
-   "A THANKSGIVING FEAST",
-   "AT THE HOUSE",
-   "OF HECK"
+   "THANKSGIVING",
+   "WEEK 12",
+   "STAT CARD"
   ]
  },
  "card": {
@@ -22,7 +24,7 @@
   "sub": "RB \u00b7 DET \u00b7 HOUSE OF HECK",
   "ghost": "W12",
   "total": 55.2,
-  "totalLabel": "FANTASY PTS \u00b7 THANKSGIVING",
+  "totalLabel": "FANTASY PTS \u00b7 WEEK 12",
   "chips": [
    [
     "+28.0",
@@ -37,12 +39,13 @@
     "SEASON-BEST<br>KPL GAME"
    ]
   ],
-  "foot": "HOUSE OF HECK \u00b7 8-3 \u00b7 1ST IN KPL",
-  "spriteScale": 9
+  "foot": "HOUSE OF HECK \u00b7 8-3",
+  "spriteScale": 9,
+  "backLogo": "league"
  },
  "box": {
   "kicker": "CHI @ DET \u00b7 THANKSGIVING",
-  "title": "ON THE MENU",
+  "title": "THE BOX SCORE",
   "partsTitle": "HOW HE SCORED 55.2",
   "stats": [
    [
@@ -95,13 +98,13 @@
   ]
  },
  "partCols": [
-  "#f2a52b",
+  "#ffe32b",
   "#ff8a1f",
-  "#e0202a",
-  "#efe2d0",
-  "#c6b0a3",
-  "#ffd27a",
-  "#bf362b"
+  "#c4002b",
+  "#5b91ff",
+  "#cfe0ff",
+  "#35f377",
+  "#f8fbff"
  ],
  "season": {
   "kicker": "FANTASY POINTS BY WEEK \u00b7 2026",
@@ -192,22 +195,22 @@
     "JAHMYR GIBBS",
     "DET \u00b7 HOUSE OF HECK",
     55.2,
-    "#f2a52b"
+    "#ffe32b"
    ],
    [
     "D'ANDRE SWIFT",
     "CHI \u00b7 KEELDAWGS",
     29.2,
-    "#c6b0a3"
+    "#5b91ff"
    ],
    [
     "AMON-RA ST. BROWN",
     "DET \u00b7 KEELDAWGS",
     24.6,
-    "#c6b0a3"
+    "#5b91ff"
    ]
   ],
-  "foot": "SCORES AS OF NOV 28 14:35 UTC"
+  "foot": "SCORES AS OF NOV 28 14:44 UTC"
  },
  "outro": {
   "title": "GOBBLE GOBBLE",
@@ -215,6 +218,6 @@
  },
  "source": {
   "espn_weeks": "/tmp/claude-0/-home-user-kplhq/2a91377c-47be-551b-ab51-91b35421df03/scratchpad/kitraw",
-  "built": "2026-11-28T14:35:52.341071+00:00"
+  "built": "2026-11-28T14:44:58.848375+00:00"
  }
 }

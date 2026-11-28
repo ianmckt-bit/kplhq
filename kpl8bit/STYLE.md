@@ -22,9 +22,11 @@ The rules that make every KPL HQ video look like it came from the same studio. `
 
 Pick one theme per video with `class="theme-<name>"` on `<body>`. Never hard-code colours that a token already covers.
 
+**`kpl` (KPL HQ blue) is the base theme and the default for everything.** `thanksgiving` is its holiday variant. `hoh` and `feast` are House of Heck team variants: use them only when a video is about House of Heck and asks for that look.
+
 | Theme | Use for | Background | Accent / accent 2 | Frame edge |
 |---|---|---|---|---|
-| `kpl` | Default: gameday, recaps, promos | navy `#020f3d` starfield and turf | yellow `#ffe32b` / orange `#ff8a1f` | white |
+| `kpl` | **Base (default)**: gameday, recaps, promos, cards | navy `#020f3d` starfield and turf | yellow `#ffe32b` / orange `#ff8a1f` | white |
 | `thanksgiving` | Holiday KPL (Thanksgiving promo, Gibbs card) | navy, falling leaves | yellow / orange | orange |
 | `hoh` | House of Heck team pieces | crimson night `#0b0306`, castle, bats | amber `#f2a52b` / orange | bone `#c6b0a3` |
 | `feast` | House of Heck × Thanksgiving | crimson night, leaves, moon, castle | amber / orange | orange |

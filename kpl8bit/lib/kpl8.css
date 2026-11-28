@@ -4,16 +4,17 @@
 @font-face{font-family:PS2P;src:url(../assets/fonts/ps2p.woff2)}
 @font-face{font-family:VT;src:url(../assets/fonts/vt323.woff2)}
 
-/* ---------- themes: every colour a video uses comes from these tokens ---------- */
-:root,.theme-kpl{--bg:#020f3d;--bg2:#031c69;--panel-a:#0b37ad;--panel-b:#031c69;--edge:#f8fbff;--ink:#000;
+/* ---------- themes: every colour a video uses comes from these tokens.
+   kpl (KPL HQ blue) is the BASE theme; thanksgiving is its holiday variant; hoh/feast are House of Heck team variants. ---------- */
+:root,.theme-kpl{--bg:#020f3d;--bg2:#031c69;--panel-a:#0b37ad;--panel-b:#031c69;--edge:#f8fbff;--ink:#000;--bar:#5b91ff;--bye:#0a1f5c;--grid:rgba(207,224,255,.12);--art:#1d63e0;--best:#ffd27a;
   --text:#f8fbff;--muted:#cfe0ff;--accent:#ffe32b;--accent2:#ff8a1f;--hot:#ff1644;--shade:#c4002b;--good:#35f377;--drop:#031c69}
-.theme-thanksgiving{--bg:#020f3d;--bg2:#031c69;--panel-a:#0b37ad;--panel-b:#031c69;--edge:#ff8a1f;
+.theme-thanksgiving{--bg:#020f3d;--bg2:#031c69;--panel-a:#0b37ad;--panel-b:#031c69;--edge:#ff8a1f;--bar:#5b91ff;--bye:#0a1f5c;--grid:rgba(207,224,255,.12);--art:#c25a1c;--best:#ffd27a;
   --text:#fff1d6;--muted:#cfe0ff;--accent:#ffe32b;--accent2:#ff8a1f;--hot:#c4002b;--shade:#b8481a;--good:#35f377;--drop:#6b3612}
-.theme-hoh{--bg:#0b0306;--bg2:#1a0508;--panel-a:#2a070b;--panel-b:#150307;--edge:#c6b0a3;
+.theme-hoh{--bg:#0b0306;--bg2:#1a0508;--panel-a:#2a070b;--panel-b:#150307;--edge:#c6b0a3;--bar:#bf362b;--bye:#6b161b;--grid:rgba(198,176,163,.12);--art:#6b161b;--best:#ffd27a;
   --text:#efe2d0;--muted:#c6b0a3;--accent:#f2a52b;--accent2:#ff8a1f;--hot:#e0202a;--shade:#6b161b;--good:#ffd27a;--drop:#2a0508}
-.theme-feast{--bg:#0b0306;--bg2:#1a0508;--panel-a:#2a070b;--panel-b:#150307;--edge:#ff8a1f;
+.theme-feast{--bg:#0b0306;--bg2:#1a0508;--panel-a:#2a070b;--panel-b:#150307;--edge:#ff8a1f;--bar:#bf362b;--bye:#6b161b;--grid:rgba(198,176,163,.12);--art:#6b161b;--best:#ffd27a;
   --text:#efe2d0;--muted:#c6b0a3;--accent:#f2a52b;--accent2:#ff8a1f;--hot:#bf362b;--shade:#6b161b;--good:#ffd27a;--drop:#2a0508}
-.theme-rivalry{--bg:#140904;--bg2:#24120a;--panel-a:#2b150b;--panel-b:#1e0e06;--edge:#5a2a14;
+.theme-rivalry{--bg:#140904;--bg2:#24120a;--panel-a:#2b150b;--panel-b:#1e0e06;--edge:#5a2a14;--bar:#ff6a3d;--bye:#3a1606;--grid:rgba(247,230,196,.1);--art:#3a1606;--best:#f5b400;
   --text:#f7e6c4;--muted:#a8805e;--accent:#f5b400;--accent2:#ff6a3d;--hot:#c4302b;--shade:#3a1606;--good:#f5b400;--drop:#3a1606}
 
 /* ---------- canvas + base type ---------- */

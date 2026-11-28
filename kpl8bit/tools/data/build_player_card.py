@@ -3,7 +3,7 @@ usage: python3 -I build_player_card.py RAWDIR PLAYER_ID WEEK OUT.json [--theme f
 Every number on screen comes from here; nothing is typed in by hand. Re-run after games finish to refresh."""
 import argparse, datetime, json
 ap = argparse.ArgumentParser(); ap.add_argument('raw'); ap.add_argument('pid', type=int); ap.add_argument('week', type=int); ap.add_argument('out')
-ap.add_argument('--theme', default='feast'); ap.add_argument('--copy', default=None, help='JSON of wording overrides, deep-merged last (numbers stay from ESPN)'); ap.add_argument('--sprite', default=None); ap.add_argument('--season', default=2026, type=int)
+ap.add_argument('--theme', default='kpl', help='kpl (base, blue) | thanksgiving | hoh | feast'); ap.add_argument('--copy', default=None, help='JSON of wording overrides, deep-merged last (numbers stay from ESPN)'); ap.add_argument('--sprite', default=None); ap.add_argument('--season', default=2026, type=int)
 a = ap.parse_args()
 LOGO = {1: 'c', 2: 's', 3: 'k', 4: 'm', 5: 't', 6: 'h', 7: 'b', 8: 'u', 9: 'e', 10: 'w', 11: 'r', 12: 'v'}
 POS = {1: 'QB', 2: 'RB', 3: 'WR', 4: 'TE', 5: 'K', 16: 'D/ST'}
@@ -53,22 +53,23 @@ proj = W['proj'] or 0; hi = best['wk'] == a.week
 lead = mu[mine][0] - mu[opp][0]; tag = lambda tid: {6: 'HOH', 3: 'DAWGS'}.get(tid, teamNames[tid].split()[-1].upper())
 opp_top = [(info[pid][0].upper(), f"{info[pid][2]} · {teamNames[opp].upper()}", p) for p, pid in mu[opp][1][:2]]
 asof = datetime.datetime.now(datetime.timezone.utc)
-out = dict(theme=a.theme, background='haunted' if a.theme in ('feast', 'hoh') else 'kpl', bug=f'WEEK {a.week}',
+HOH = a.theme in ('feast', 'hoh')
+out = dict(theme=a.theme, background='haunted' if HOH else 'kpl', style='feast' if HOH else 'kpl', bug=f'WEEK {a.week}', bugLogo=LOGO[mine] if HOH else 'league',
   player=dict(name=name.upper(), pos=pos, nfl=nfl, kplLogo=LOGO[mine], sprite=a.sprite or f'assets/players/{a.pid}_hero.png'),
-  open=dict(logo=LOGO[mine], lines=[f'WEEK {a.week} STAT CARD', teamNames[mine].upper().rsplit(' ', 1)[0] if len(teamNames[mine]) > 12 else teamNames[mine].upper(), teamNames[mine].upper().rsplit(' ', 1)[1] if len(teamNames[mine]) > 12 else '']),
+  open=dict(logo=LOGO[mine], lines=[f'WEEK {a.week} STAT CARD', teamNames[mine].upper().rsplit(' ', 1)[0] if len(teamNames[mine]) > 12 else teamNames[mine].upper(), teamNames[mine].upper().rsplit(' ', 1)[1] if len(teamNames[mine]) > 12 else '']) if HOH else dict(logo='league', lines=['KPL HQ', f'WEEK {a.week}', 'STAT CARD']),
   card=dict(header=f'KPL · WEEK {a.week}', sub=f'{pos} · {nfl} · {teamNames[mine].upper()}', ghost=f'W{a.week}', total=W['pts'], totalLabel=f'FANTASY PTS · WEEK {a.week}',
     chips=[[f"{'+' if W['pts']>=proj else ''}{W['pts']-proj:.1f}", 'VS HIS<br>PROJECTION'], [f"{W['pts']/proj:.1f}X" if proj else '-', f'PROJECTED<br>{proj:.1f}'], ['HIGH' if hi else f'#{lrank}', 'SEASON-BEST<br>KPL GAME' if hi else 'IN KPL<br>LINEUP PTS']],
-    foot=f"{teamNames[mine].upper()} · {teamRec.get(mine,'')}", spriteScale=9),
+    foot=f"{teamNames[mine].upper()} · {teamRec.get(mine,'')}", spriteScale=9, backLogo=LOGO[mine] if HOH else 'league'),
   box=dict(kicker=f'WEEK {a.week} BOX SCORE', title='ON THE MENU' if a.theme == 'feast' else 'THE BOX SCORE', partsTitle=f"HOW HE SCORED {W['pts']:.1f}",
     stats=[[W['car'], 'CARRIES'], [W['ryd'], 'RUSH YDS'], [W['rtd'], 'RUSH TD'], [round(W['ryd'] / W['car'], 1) if W['car'] else 0, 'YDS/CARRY', 1], [W['rec'], 'CATCHES'], [W['cyd'], 'REC YDS']], parts=parts),
-  partCols=['#f2a52b', '#ff8a1f', '#e0202a', '#efe2d0', '#c6b0a3', '#ffd27a', '#bf362b'],
+  partCols=['#f2a52b', '#ff8a1f', '#e0202a', '#efe2d0', '#c6b0a3', '#ffd27a', '#bf362b'] if HOH else ['#ffe32b', '#ff8a1f', '#c4002b', '#5b91ff', '#cfe0ff', '#35f377', '#f8fbff'],
   season=dict(kicker=f'FANTASY POINTS BY WEEK · {a.season}', title='SEASON SO FAR', weeks=[dict(wk=x['wk'], pts=x['pts'], played=x['played']) for x in weeks], best=best['wk'], avg=avg,
     crownLabel='SEASON HIGH', note=f'<span class="t-accent">{season_pts}</span> PTS · <span class="t-accent">#{lrank}</span> IN KPL LINEUP PTS · <span class="t-accent">{len(g)}</span> GAMES'),
   matchup=dict(kicker=f'KPL WEEK {a.week}', title=f"{tag(mine) if lead >= 0 else tag(opp)} {'LEADS' if True else ''} BY {abs(lead):.1f}",
     a=dict(name=teamNames[mine].upper(), logo=LOGO[mine], score=mu[mine][0]), b=dict(name=teamNames[opp].upper(), logo=LOGO[opp], score=mu[opp][0]), rowsTitle='TOP SCORERS',
-    rows=[[name.upper(), f'{nfl} · {teamNames[mine].upper()}', W['pts'], '#f2a52b']] + [[n, s, p, '#c6b0a3'] for n, s, p in opp_top],
+    rows=[[name.upper(), f'{nfl} · {teamNames[mine].upper()}', W['pts'], '#f2a52b' if HOH else '#ffe32b']] + [[n, s, p, '#c6b0a3' if HOH else '#5b91ff'] for n, s, p in opp_top],
     foot=f"SCORES AS OF {asof.strftime('%b %d %H:%M UTC').upper()}"),
-  outro=dict(title='GOBBLE GOBBLE' if a.theme == 'feast' else 'KPL HQ', line=f"<span class='t-accent'>{W['pts']:.1f}</span> IN WEEK {a.week} · <span class='t-accent'>{season_pts}</span> ON THE SEASON"),
+  outro=dict(title='GOBBLE GOBBLE' if a.theme in ('feast', 'thanksgiving') else 'KPL HQ', line=f"<span class='t-accent'>{W['pts']:.1f}</span> IN WEEK {a.week} · <span class='t-accent'>{season_pts}</span> ON THE SEASON"),
   source=dict(espn_weeks=f'{a.raw}', built=asof.isoformat()))
 def merge(d, o):
     for k, v in o.items():

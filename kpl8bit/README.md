@@ -42,13 +42,15 @@ curl -o /tmp/head.png https://a.espncdn.com/i/headshots/nfl/players/full/<ESPN_I
 mkdir -p /tmp/px && python3 -I tools/pixelate.py /tmp/head.png /tmp/px 76 18 && cp /tmp/px/sprite.png assets/players/<ESPN_ID>_hero.png
 # 3. a folder for this video, from the template
 cp -r templates/player-card examples/<name>       # must sit two levels under kpl8bit/
-python3 -I tools/data/build_player_card.py /tmp/kplraw <ESPN_ID> 12 examples/<name>/data.json --theme feast --copy templates/player-card/copy.thanksgiving.json
+python3 -I tools/data/build_player_card.py /tmp/kplraw <ESPN_ID> 12 examples/<name>/data.json            # base KPL blue
+#   holiday: --theme thanksgiving --copy templates/player-card/copy.thanksgiving.json
+#   House of Heck feast: --theme feast --copy templates/player-card/copy.feast.json
 # 4. preview frames, look, then build
 W=1080 H=1920 node tools/render.js examples/<name> /tmp/prev 30 31.5 3,8,14,20,26,30
 tools/make_video.sh examples/<name> 31.5 reels
 ```
 
-- **Themes:** `--theme kpl|thanksgiving|hoh|feast`. Pass the matching `background` in the data: `kpl` gives the starfield, anything else gives the haunted castle.
+- **Themes:** `--theme kpl` (default, KPL HQ blue) `|thanksgiving|hoh|feast`. The builder sets `style` and `background`: the blue themes get the starfield and turf, the KPL badge with the leaf wreath and turkey, and the harvest-sun card. `hoh`/`feast` get the haunted castle, the team logo and feast table, and the blood-moon card. `templates/player-card/data.example.json` is the blue Thanksgiving card; `data.feast.json` is the House of Heck feast version (preview it with `DATA=data.feast.json`).
 - **Wording:** put wording overrides (titles, kickers, footers) in a small `copy.*.json` and pass it with `--copy`. Numbers always come from ESPN.
 - **Breakdown check:** the builder verifies that the scoring breakdown adds up to ESPN's fantasy total and warns if not. Passing, fumbles and 2-point plays aren't modelled yet, so for QBs the breakdown needs extending in `build_player_card.py`.
 - **Paths:** pages load `../../lib` and `../../assets`, so a video folder must sit two levels under `kpl8bit/` (for example `examples/<name>`).
@@ -72,7 +74,7 @@ tools/make_video.sh examples/<name> 31.5 reels
 | `thanksgiving-promo` | KPL Thanksgiving Day promo plus the mid-season report | 1080×1920, 68.4 s |
 | `rivalry-week` | Rivalry Week 12, head-to-head records since 2018 | 1920×1080, 60.4 s |
 | `gibbs-season-card-hoh` | Jahmyr Gibbs season card in House of Heck colours | 1080×1920, 31.6 s |
-| `gibbs-thanksgiving-card` | Gibbs Thanksgiving week 12 card | 1080×1920, 24.6 s |
-| `house-of-heck-feast` | "A Thanksgiving Feast at the House of Heck"; the source of `templates/player-card` | 1080×1920, 31.5 s |
+| `gibbs-thanksgiving-card` | Gibbs Thanksgiving week 12 card: **the base blue KPL look**, reproduced by the template's default `data.example.json` | 1080×1920, 24.6 s |
+| `house-of-heck-feast` | "A Thanksgiving Feast at the House of Heck" (House of Heck variant; `templates/player-card` reproduces it with `data.feast.json`) | 1080×1920, 31.5 s |
 
 The examples are standalone pages, written before the shared library existed. New work should start from `templates/`, and anything reusable from an example belongs in `lib/` first.
